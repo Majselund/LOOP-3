@@ -15,4 +15,11 @@
     height: 100vh;
     width: 100%;
     z-index: 10;
+    display: flex;
+    justify-content: center;
+    align-items: end;
+}
+
+.hero a {
+    padding: 50px;
 }
