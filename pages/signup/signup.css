@@ -1,0 +1,28 @@
+input {
+    width: 100%;
+    padding: 12px 20px;
+    border: 1px solid rgb(1, 8, 19);
+    border-radius: 4px;
+    font-size: medium;
+    box-sizing: border-box;
+    margin-bottom: 20px;
+}
+input::placeholder {
+    font-size: medium;
+}
+input[type=checkbox] {
+    height: 40px;
+    width: auto;
+    margin-right: 24px;
+    transform: scale(2);
+}
+input[type=submit] {
+    width: 100%;
+    margin-top: 20px;
+    background-color: #E6E6E6;
+}
+
+input[type=submit]:hover {
+    background-color: #a1a0a0;
+    cursor: pointer;
+}
