@@ -1,0 +1,24 @@
+.masonry {
+    column-count: 4;
+    column-gap: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+figure {
+    margin: 0;
+    display: grid;
+    grid-template-rows: 1fr auto;
+    margin-bottom: 10px;
+    break-inside: avoid;
+}
+
+img {
+    max-width: 100%;
+    display: block;
+}
+
+figure > img {
+    grid-row: 1 / -1;
+    grid-column: 1;
+}
