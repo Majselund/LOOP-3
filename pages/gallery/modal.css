@@ -1,0 +1,38 @@
+/* The Modal (background) */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 2;
+    inset: 0;
+    background-color: rgba(0, 0, 0, 0.6);
+}
+
+.modal-content {
+    position: relative;
+    padding: 20px;
+    width: 80%;
+    margin: auto;
+    max-height: 95vh;
+}
+
+.close {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 25px;
+    right: 30px;
+    background-color: #ffffff3e;
+    color: #000;
+    border-radius: 50%;
+    height: 30px;
+    width: 30px;
+    padding: 8px;
+    font-size: 28px;
+}
+
+.close:hover,
+.close:focus {
+    background-color: #ffffff74;
+    cursor: pointer;
+}

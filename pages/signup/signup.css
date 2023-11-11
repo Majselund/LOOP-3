@@ -1,28 +1,52 @@
 input {
     width: 100%;
-    padding: 12px 20px;
+    padding: 10px 15px;
     border: 1px solid rgb(1, 8, 19);
     border-radius: 4px;
     font-size: medium;
     box-sizing: border-box;
     margin-bottom: 20px;
+    /* border: solid 4px var(--text-color); */
 }
+
+input:nth-of-type(1) {
+    border: solid 4px var(--secondary-yellow);
+}
+input:nth-of-type(2) {
+    border: solid 4px var(--secondary-green);
+}
+input:nth-of-type(3) {
+    border: solid 4px var(--accent-color);
+}
+input:nth-of-type(4) {
+    border: solid 4px var(--secondary-yellow);
+}
+
+
 input::placeholder {
     font-size: medium;
+    color: var(--text-color);
 }
+
 input[type=checkbox] {
+    margin: auto;
     height: 40px;
     width: auto;
-    margin-right: 24px;
-    transform: scale(2);
+    margin-right: 20px;
+    width: 25px;
+    height: 25px;
+    outline: var(--secondary-green);
 }
+
 input[type=submit] {
     width: 100%;
     margin-top: 20px;
-    background-color: #E6E6E6;
+    background-color: transparent;
+    border: solid 4px var(--accent-color);
 }
 
 input[type=submit]:hover {
-    background-color: #a1a0a0;
+    background-color: var(--accent-color);
+    border-color: var(--accent-color);
     cursor: pointer;
 }

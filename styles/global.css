@@ -1,8 +1,10 @@
 :root {
     --primary-color: #FFFFFF;
-    --secondary-color: #c0b0a8;
-    --accent-color: #8d15e2;
-    --text-color: #000000;
+    --secondary-green: #96AE96;
+    --secondary-yellow: #FFC86E;
+    --accent-color: #FA6E5A;
+    --text-color: #000A28;
+    --light-grey: #EBEBF0;
 }
 
 html {
@@ -11,6 +13,7 @@ html {
 
 body {
     display: flex;
+    color: var(--text-color);
     flex-direction: column;
     min-height: 100vh;
     margin: 0px;
@@ -27,9 +30,9 @@ a:hover {
 nav {
     position: sticky;
     top: 0px;
-    background-color: var(--secondary-color);
+    background-color: var(--secondary-green);
     opacity: 0.9;
-    z-index: 999;
+    z-index: 1;
     font-size: 20px;
     text-align: end;
     padding: 25px 100px;
@@ -54,7 +57,7 @@ h1 {
 }
 
 footer {
-    background-color: var(--secondary-color);
+    background-color: var(--secondary-green);
     color: var(--text-color);
     font-size: 15px;
 }

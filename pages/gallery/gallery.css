@@ -1,8 +1,16 @@
 .masonry {
     column-count: 4;
     column-gap: 10px;
-    padding-left: 10px;
-    padding-right: 10px;
+    padding: 10px;
+}
+
+button {
+    border: none;
+    background-color: transparent;
+}
+
+button:hover {
+    cursor: pointer;
 }
 
 figure {
