@@ -30,7 +30,12 @@
 }
 
 .hero a {
-    padding: 50px;
+    margin: 50px;
+    transition: all 0.2s;
+}
+
+.hero a:hover {
+    transform: scale(1.2);
 }
 
 button {

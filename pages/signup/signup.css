@@ -43,10 +43,13 @@ input[type=submit] {
     margin-top: 20px;
     background-color: transparent;
     border: solid 4px var(--accent-color);
+    background: linear-gradient(to left, transparent 50%, var(--accent-color) 50%);
+    background-position: right;
+    background-size: 200% 100%;
+    transition: all 0.4s ease;
 }
 
 input[type=submit]:hover {
-    background-color: var(--accent-color);
-    border-color: var(--accent-color);
+    background-position: left;
     cursor: pointer;
 }
