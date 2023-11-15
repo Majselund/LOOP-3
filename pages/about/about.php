@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="about.css">
 </head>
 <body>
-    <?php include('/components/navigation.php') ?>
+    <?php include('../../components/navigation.php') ?>
     <main>
         <div class="content container mx-auto">
             <h1>Om innovationsdag</h1>
@@ -21,6 +21,6 @@
             </div>
         </div>
     </main>
-    <?php include('/components/footer.php') ?>
+    <?php include('../../components/footer.php') ?>
 </body>
 </html>

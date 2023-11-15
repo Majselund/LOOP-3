@@ -9,7 +9,7 @@
     <script defer src="../../javascript/modal.js"></script>
 </head>
 <body>
-    <?php include('/components/navigation.php') ?>
+    <?php include('../../components/navigation.php') ?>
     <main>
         <div class="content "container mx-auto">
             <h1>Galleri</h1>
@@ -30,6 +30,6 @@
             </div>  -->
         </div>
     </main>
-    <?php include('/components/footer.php') ?>
+    <?php include('../../components/footer.php') ?>
 </body>
 </html>

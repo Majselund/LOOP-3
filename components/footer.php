@@ -2,17 +2,17 @@
     <div class="grid container mx-auto content">
         <div>
             <p id="contact"><strong>Kontakt</strong></p>
-            <p>Mail: info@innovationsdag.dk</p>
+            <p>Mail: info@innovationsdage.dk</p>
             <p>Tlf: 8716 4700</p>
             <p>Birk Centerpark 15 <br>7400 Herning</p>
         </div>
         <div>
             <p><strong>Links</strong></p>
             <p>
-                <a href="/index.html">Sponsorer</a>    
+                <a href="/index.php">Sponsorer</a>    
             </p>
             <p>
-                <a href="/pages/gdpr/gdpr.html">GDPR</a>
+                <a href="/pages/gdpr/gdpr.php">GDPR</a>
             </p>
         </div>
         <div>

@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="./gdpr.css">
 </head>
 <body>
-    <?php include('/components/navigation.php') ?>
+    <?php include('../../components/navigation.php') ?>
     <main>
         <div id="main" class="content container mx-auto">
             <h1>GDPR</h1>
@@ -57,6 +57,6 @@
                 </div>
             </div>
     </main>
-    <?php include('/components/footer.php') ?>
+    <?php include('../../components/footer.php') ?>
 </body>
 </html>

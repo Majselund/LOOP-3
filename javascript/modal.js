@@ -1,34 +1,34 @@
 const images = [
-    '../../images/IMG_0002.png', 
-    '../../images/IMG_0006.png', 
-    '../../images/IMG_0023.png', 
-    '../../images/IMG_0026.png', 
-    '../../images/IMG_0028.png', 
-    '../../images/IMG_9656.png', 
-    '../../images/IMG_9657.png', 
-    '../../images/IMG_9658.png', 
-    '../../images/IMG_9669.png', 
-    '../../images/IMG_9674.png', 
-    '../../images/IMG_9675.png', 
-    '../../images/IMG_9685.png', 
-    '../../images/IMG_9688.png', 
-    '../../images/IMG_9693.png', 
-    '../../images/IMG_9695.png', 
-    '../../images/IMG_9696.png', 
-    '../../images/IMG_9700.png', 
-    '../../images/IMG_9702.png', 
-    '../../images/IMG_9703.png', 
-    '../../images/IMG_9705.png', 
-    '../../images/IMG_9707.png', 
-    '../../images/IMG_9709.png', 
-    '../../images/IMG_9717.png', 
-    '../../images/IMG_9724.png', 
-    '../../images/IMG_9727.png', 
-    '../../images/IMG_9736.png', 
-    '../../images/IMG_9739.png', 
-    '../../images/IMG_9747.png', 
-    '../../images/IMG_9749.png', 
-    '../../images/IMG_9780.png', 
+    '../../images/gallery/IMG_0002.avif', 
+    '../../images/gallery/IMG_0006.avif', 
+    '../../images/gallery/IMG_0023.avif', 
+    '../../images/gallery/IMG_0026.avif', 
+    '../../images/gallery/IMG_0028.avif', 
+    '../../images/gallery/IMG_9656.avif', 
+    '../../images/gallery/IMG_9657.avif', 
+    '../../images/gallery/IMG_9658.avif', 
+    '../../images/gallery/IMG_9669.avif', 
+    '../../images/gallery/IMG_9674.avif', 
+    '../../images/gallery/IMG_9675.avif', 
+    '../../images/gallery/IMG_9685.avif', 
+    '../../images/gallery/IMG_9688.avif', 
+    '../../images/gallery/IMG_9693.avif', 
+    '../../images/gallery/IMG_9695.avif', 
+    '../../images/gallery/IMG_9696.avif', 
+    '../../images/gallery/IMG_9700.avif', 
+    '../../images/gallery/IMG_9702.avif', 
+    '../../images/gallery/IMG_9703.avif', 
+    '../../images/gallery/IMG_9705.avif', 
+    '../../images/gallery/IMG_9707.avif', 
+    '../../images/gallery/IMG_9709.avif', 
+    '../../images/gallery/IMG_9717.avif', 
+    '../../images/gallery/IMG_9724.avif', 
+    '../../images/gallery/IMG_9727.avif', 
+    '../../images/gallery/IMG_9736.avif', 
+    '../../images/gallery/IMG_9739.avif', 
+    '../../images/gallery/IMG_9747.avif', 
+    '../../images/gallery/IMG_9749.avif', 
+    '../../images/gallery/IMG_9780.avif', 
     '../../images/IMG_9790.png', 
     '../../images/IMG_9792.png', 
     '../../images/IMG_9794.png', 
@@ -91,28 +91,9 @@ for (let i = 0; i < images.length; i++) {
     modalContent.className = "modal-content";
     imageModal.appendChild(modalContent);
 
-    const closeImage = document.createElement('div');
-    closeImage.id = `closeImage${i}`
-    closeImage.className = "close";
-    modalContent.appendChild(closeImage);
-
-    const iconSvg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
-    iconSvg.setAttribute('stroke', 'currentColor');
-    iconSvg.setAttribute('fill', 'currentColor');
-    iconSvg.setAttribute('stroke-width', '0');
-    iconSvg.setAttribute('viewBox', '0 0 512 512');
-    iconSvg.setAttribute('height', '1em');
-    iconSvg.setAttribute('width', '1em');
-    closeImage.appendChild(iconSvg);
-    
-    const iconPath = document.createElementNS('http://www.w3.org/2000/svg', 'path');
-    iconPath.setAttribute('d', 'M289.94 256l95-95A24 24 0 00351 127l-95 95-95-95a24 24 0 00-34 34l95 95-95 95a24 24 0 1034 34l95-95 95 95a24 24 0 0034-34z');
-    iconSvg.appendChild(iconPath);
-
     const bigImage = document.createElement('img');
     bigImage.className = "modal-image";
     bigImage.src = images[i];
-    // bigImage.width = 1400;
     modalContent.appendChild(bigImage);
 
     // Modal open and close logic
@@ -120,13 +101,9 @@ for (let i = 0; i < images.length; i++) {
         imageModal.style.display = "block";
     }
 
-    closeImage.onclick = function() {
-        imageModal.style.display = "none";
-    }
-
-    window.onclick = function(event) {
-        if(event.target == imageModal) {
+    window.addEventListener("click", function(event) {
+        if(event.target == imageModal | event.target == modalContent | event.target == bigImage) {
             imageModal.style.display = "none";
         }
-    }
+    })
 }

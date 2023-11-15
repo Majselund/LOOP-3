@@ -20,7 +20,7 @@
             </a>
         </div>
     </div>
-    <?php include('/components/navigation.php') ?>
+    <?php include('components/navigation.php') ?>
     <main>
         <div id="main" class="content container mx-auto">
             <h1>Innovationsdag</h1>
@@ -33,6 +33,6 @@
             </a>
         </div>
     </main>
-    <?php include('/components/footer.php') ?>
+    <?php include('components/footer.php') ?>
 </body>
 </html>
