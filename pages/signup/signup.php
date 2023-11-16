@@ -14,13 +14,15 @@
             <h1>Tilmelding til innovationsdagen</h1>
         <div id="main" class="content container mx-auto prose">
             <form action="process-signup.php" method="POST">
-                <label for="Uddannelsessted">Uddannelsessted</label><br>
+                <label for="uddannelsessted">Uddannelsessted</label><br>
                 <input type="text" name="uddannelsessted" required="" placeholder="Indsæt her">
-                <label for="Kontaktperson">Kontaktperson</label><br>
+                <label for="antal_elever">Antal Elever</label><br>
+                <input type="number" name="antal_elever" required="" placeholder="Indsæt her">
+                <label for="kontaktperson">Kontaktperson</label><br>
                 <input type="text" name="kontaktperson" required="" placeholder="Indsæt her">
-                <label for="Telefonnummer">Telefonnummer</label><br>
+                <label for="telefonnummer">Telefonnummer</label><br>
                 <input type="number" name="telefonnummer" required="" placeholder="Indsæt her">
-                <label for="Emailadresse">E-mailadresse</label><br>
+                <label for="emailadresse">E-mailadresse</label><br>
                 <input type="text" name="emailadresse" required="" placeholder="Indsæt her">
                 <label class="flex">
                     <input type="checkbox" name="terms" required="">
