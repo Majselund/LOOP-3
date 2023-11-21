@@ -20,7 +20,7 @@ $dbname = "innovationsdage_dk_db";
 $username = "innovationsdage_dk";
 $password = "rhmncHfe64RtDd5Bgz2A";
 
-$conn = mysqli_connect($host, $username, $password, $dbname);
+$db = mysqli_connect($host, $username, $password, $dbname);
 
 if (mysqli_connect_errno()) {
     die("Connection error: " . mysqli_connect_error());
@@ -28,10 +28,10 @@ if (mysqli_connect_errno()) {
 
 $sql = "INSERT INTO tilmeldinger (uddannelsessted, antal_elever, kontaktperson, telefonnummer, emailadresse) VALUES (?, ?, ?, ?, ?)";
 
-$stmt = mysqli_stmt_init($conn);
+$stmt = mysqli_stmt_init($db);
 
 if (!mysqli_stmt_prepare($stmt, $sql)) {
-    die("Error: " . mysqli_error($conn));
+    die("Error: " . mysqli_error($db));
 }
 
 mysqli_stmt_bind_param($stmt, "sisis", $uddannelsessted, $antal_elever, $kontaktperson, $telefonnummer, $emailadresse);
@@ -39,5 +39,3 @@ mysqli_stmt_bind_param($stmt, "sisis", $uddannelsessted, $antal_elever, $kontakt
 mysqli_stmt_execute($stmt);
 
 echo "Record saved.";
-
-?>
