@@ -11,7 +11,7 @@
     <?php include('../../components/navigation.php') ?>
     <main>
         <div class="content container mx-auto">
-            <h1>Om innovationsdag</h1>
+            <h1>Om innovationsdagene</h1>
             <div class="prose mx-auto">
                 <p>Alle ungdomsuddannelsesinstitutioner fra regionen inviteres til en dag, der sætter innovation og kreativ tænkning i højsædet. Arrangementet giver eleverne mulighed for at prøve kræfter med kreative processer sat i relation til koncept- og produktudvikling </p>
                 <img class="block mx-auto prose" src="/images/Picture 2.png" alt=""> <br><br>

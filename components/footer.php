@@ -28,6 +28,6 @@
         </div>
     </div>
     <div class="copyright">
-        &copy;Copyright © 2023. All Rights Reserved. — Innovationsdag | AU Herning
+        &copy;Copyright © 2023. All Rights Reserved. — Innovationsdage | AU Herning
     </div>
 </footer>

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Innovationsdag</title>
+    <title>Innovationsdage</title>
     <link rel="stylesheet" href="styles/global.css">
     <link rel="stylesheet" href="styles/index.css">
     <script defer src="javascript/heroImage.js"></script>
@@ -23,7 +23,7 @@
     <?php include('components/navigation.php') ?>
     <main>
         <div id="main" class="content container mx-auto">
-            <h1>Innovationsdag</h1>
+            <h1>Innovationsdage</h1>
             <p class="prose mx-auto">Alle gymnasier/ungdomsuddannelser fra regionen inviteres til en dag, der sætter innovation og kreativ tænkning i højsædet. Arrangementet giver eleverne mulighed for at prøve kræfter med kreative processer sat i relation til koncept- og produktudvikling. Dette gøres ud fra konkrete cases og problemstillinger, som en række virksomheder finder aktuelle netop nu. Derudover får eleverne mulighed for at networke og skabe nye kontakter. <br><br><a href="/pages/about/about.php"><strong>Læs mere her!</strong></a></p><br>
             <img src="images/sponsorer.jpg" alt="sponsorer" class="block mx-auto prose">
             <a href="/pages/signup/signup.php">

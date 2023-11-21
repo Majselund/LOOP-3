@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Innovationsdag</title>
+    <title>Innovationsdage</title>
     <link rel="stylesheet" href="../../styles/global.css">
     <link rel="stylesheet" href="./gdpr.css">
 </head>
@@ -14,9 +14,9 @@
             <h1>GDPR</h1>
             <div class="prose mx-auto">
                 <h2>Introduktion</h2>
-                <p>Innovationsdag er forpligtet til at beskytte privatlivet for alle besøgende og brugere på vores hjemmeside. Som en del af denne forpligtelse har vi implementeret foranstaltninger for at sikre, at vores hjemmeside overholder principperne i databeskyttelsesforordningen (GDPR).</p>
+                <p>Innovationsdage er forpligtet til at beskytte privatlivet for alle besøgende og brugere på vores hjemmeside. Som en del af denne forpligtelse har vi implementeret foranstaltninger for at sikre, at vores hjemmeside overholder principperne i databeskyttelsesforordningen (GDPR).</p>
                 <h2>Dataansvarlig</h2>
-                <p>Dataansvarlig for de personoplysninger, der indsamles via kontaktformularen på vores hjemmeside, er Innovationsdag. Vores kontaktinformationer er:<br><br> Innovationsdag <br>Brik Centerpark 15 <br>7400 Herning </p>
+                <p>Dataansvarlig for de personoplysninger, der indsamles via kontaktformularen på vores hjemmeside, er Innovationsdage. Vores kontaktinformationer er:<br><br> Innovationsdage <br>Brik Centerpark 15 <br>7400 Herning </p>
                 <h2>Personoplysninger, der indsamles</h2>
                 <p>De personoplysninger, der indsamles via kontaktformularen på vores hjemmeside, omfatter: <br>Uddannelsessted <br>Kontaktperson <br>E-mailadresse <br>Telefonnummer</p>
                 <h2>Formål med indsamling af data</h2>

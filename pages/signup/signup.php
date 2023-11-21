@@ -11,7 +11,7 @@
     <?php include('../../components/navigation.php') ?>
     <main>
         <div id="main" class="content container mx-auto">
-            <h1>Tilmelding til innovationsdagen</h1>
+            <h1>Tilmelding til innovationsdagene</h1>
         <div id="main" class="content container mx-auto prose">
             <form action="process-signup.php" method="POST">
                 <label for="uddannelsessted">Uddannelsessted</label><br>
