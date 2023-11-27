@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,10 +9,11 @@
     <link rel="stylesheet" href="gallery.css">
     <script defer src="../../javascript/modal.js"></script>
 </head>
+
 <body>
-    <?php include('../../components/navigation.php') ?>
+    <?php include('../../includes/navigation.php') ?>
     <main>
-        <div class="content "container mx-auto">
+        <div class="content " container mx-auto">
             <h1>Galleri</h1>
         </div>
         <div id="masonry" class="masonry">
@@ -30,6 +32,7 @@
             </div>  -->
         </div>
     </main>
-    <?php include('../../components/footer.php') ?>
+    <?php include('../../includes/footer.php') ?>
 </body>
+
 </html>

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,8 +8,9 @@
     <link rel="stylesheet" href="../../styles/global.css">
     <link rel="stylesheet" href="./gdpr.css">
 </head>
+
 <body>
-    <?php include('../../components/navigation.php') ?>
+    <?php include('../../includes/navigation.php') ?>
     <main>
         <div id="main" class="content container mx-auto">
             <h1>GDPR</h1>
@@ -54,9 +56,10 @@
                 <p>Vi kan opdatere denne GDPR-politik fra tid til anden. De seneste opdateringer vil altid være tilgængelig på vores hjemmeside. Vi anbefaler, at du besøger siden regelmæssigt for at sikre, at du er opdateret på eventuelle ændringer.</p>
                 <h2>Konklusion</h2>
                 <p>Ved at bruge kontaktformularer på vores hjemmeside accepterer du indsamlingen og behandlingen af dine personoplysninger som beskrevet i denne GDPR-politik. Hvis du har spørgsmål eller bekymringer vedrørende vores databehandlingspraksis, bedes du kontakte os via kontaktoplysningerne angivet ovenfor.</p>
-                </div>
             </div>
+        </div>
     </main>
-    <?php include('../../components/footer.php') ?>
+    <?php include('../../includes/footer.php') ?>
 </body>
+
 </html>

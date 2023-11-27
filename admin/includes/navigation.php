@@ -5,7 +5,7 @@
                 <a href="/index.php">Innovations<strong>dag</strong></a>
             </div>
             <div>
-                <a href="/admin/index.php">Home</a> | <a href="/admin/components/create_user.php">Opret bruger</a> | <a href="/admin/components/logout.php">Log ud</a>
+                <a href="/admin/index.php">Home</a> | <a href="/admin/create_user.php">Opret bruger</a> | <a href="/admin/includes/logout.php">Log ud</a>
             </div>
         </div>
     </nav>
@@ -13,10 +13,10 @@
     <nav>
         <div class="container mx-auto navigation">
             <div>
-                <a href="/index.php">Innovations<strong>dag</strong></a>
+                <a href="/index.php">Innovations<strong>dage</strong></a>
             </div>
             <div>
-                <a href="/admin/index.php">Home</a> | <a href="/admin/components/login.php">Login</a>
+                <a href="/admin/index.php">Home</a> | <a href="/admin/login.php">Login</a>
             </div>
         </div>
     </nav>

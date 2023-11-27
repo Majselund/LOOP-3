@@ -2,7 +2,7 @@
 session_start();
 
 if (isset($_SESSION["user_id"])) {
-    $mysqli = require __DIR__ . "/../../database/config.php";
+    $mysqli = require __DIR__ . "/../database/config.php";
     $sql = "SELECT * FROM users WHERE id = {$_SESSION["user_id"]}";
     $result = $mysqli->query($sql);
     $user = $result->fetch_assoc();
@@ -14,13 +14,13 @@ if (isset($_SESSION["user_id"])) {
 <head>
     <title>Create User</title>
     <meta charset="UTF-8" />
-    <link rel="stylesheet" href="../../styles/global.css">
+    <link rel="stylesheet" href="../styles/global.css">
     <script src="https://unpkg.com/just-validate@latest/dist/just-validate.production.min.js" defer></script>
     <script src="./js/validation.js" defer></script>
 </head>
 
 <body>
-    <?php include('./navigation.php') ?>
+    <?php include('includes/navigation.php') ?>
     <h1>Create User</h1>
     <?php if (isset($user)) : ?>
         <main>

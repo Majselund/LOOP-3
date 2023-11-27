@@ -2,7 +2,7 @@
 $is_invalid = false;
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
-	$mysqli = require __DIR__ . "/../../database/config.php";
+	$mysqli = require __DIR__ . "/../database/config.php";
 
 	$sql = sprintf(
 		"SELECT * FROM users WHERE email = '%s'",
@@ -17,7 +17,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 			session_start();
 			session_regenerate_id();
 			$_SESSION["user_id"] = $user["id"];
-			header("Location: ../index.php");
+			header("Location: index.php");
 			exit;
 		}
 	}
@@ -31,11 +31,11 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 <head>
 	<title>Login</title>
 	<meta charset="UTF-8">
-	<link rel="stylesheet" href="../../styles/global.css">
+	<link rel="stylesheet" href="../styles/global.css">
 </head>
 
 <body>
-	<?php include('./navigation.php') ?>
+	<?php include('includes/navigation.php') ?>
 	<?php if ($is_invalid) : ?>
 		<h1>Login</h1>
 		<em>Invalid login</em>

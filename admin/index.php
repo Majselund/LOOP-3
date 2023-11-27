@@ -18,7 +18,7 @@ if (isset($_SESSION["user_id"])) {
 </head>
 
 <body>
-    <?php include('components/navigation.php') ?>
+    <?php include('includes/navigation.php') ?>
     <?php if (isset($user)) : ?>
         <main>
             <h1>Home</h1>

@@ -10,7 +10,7 @@
 </head>
 
 <body>
-    <?php include('../../components/navigation.php') ?>
+    <?php include('../../includes/navigation.php') ?>
     <main>
         <div class="content container mx-auto">
             <h1>Om innovationsdagene</h1>
@@ -23,7 +23,7 @@
             </div>
         </div>
     </main>
-    <?php include('../../components/footer.php') ?>
+    <?php include('../../includes/footer.php') ?>
 </body>
 
 </html>
