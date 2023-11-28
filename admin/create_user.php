@@ -22,29 +22,31 @@ if (isset($_SESSION["user_id"])) {
 
 <body>
     <?php include('includes/navigation.php') ?>
-    <h1>Create User</h1>
     <?php if (isset($user)) : ?>
         <main>
-            <div class="container mx-auto">
-                <form action="process-signup.php" method="post" id="signup">
-                    <div>
-                        <label for="name">Name</label>
-                        <input type="text" id="name" name="name" />
-                    </div>
-                    <div>
-                        <label for="email">email</label>
-                        <input type="email" id="email" name="email" />
-                    </div>
-                    <div>
-                        <label for="password">Password</label>
-                        <input type="password" id="password" name="password" />
-                    </div>
-                    <div>
-                        <label for="password_confirmation">Repeat password</label>
-                        <input type="password" id="password_confirmation" name="password_confirmation" />
-                    </div>
-                    <button>Sign up</button>
-                </form>
+            <div id="main" class="content container mx-auto">
+                <h1>Opret bruger</h1>
+                <div id="main" class="content container mx-auto prose">
+                    <form action="process-signup.php" method="post" id="signup">
+                        <div>
+                            <label for="name">Name</label>
+                            <input type="text" id="name" name="name" />
+                        </div>
+                        <div>
+                            <label for="email">email</label>
+                            <input type="email" id="email" name="email" />
+                        </div>
+                        <div>
+                            <label for="password">Password</label>
+                            <input type="password" id="password" name="password" />
+                        </div>
+                        <div>
+                            <label for="password_confirmation">Repeat password</label>
+                            <input type="password" id="password_confirmation" name="password_confirmation" />
+                        </div>
+                        <button>Sign up</button>
+                    </form>
+                </div>
             </div>
         </main>
     <?php else : ?>
