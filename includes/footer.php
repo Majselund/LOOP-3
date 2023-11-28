@@ -7,7 +7,7 @@
             <p>Birk Centerpark 15 <br>7400 Herning</p>
         </div>
         <div>
-            <p><strong>info</strong></p>
+            <p><strong>Info</strong></p>
             <p>
                 <a href="/pages/sponsor/sponsor.php">Sponsorer</a>
             </p>

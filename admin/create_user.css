@@ -1,0 +1,58 @@
+input {
+    width: 100%;
+    padding: 10px 15px;
+    border: 1px solid rgb(1, 8, 19);
+    border-radius: 4px;
+    font-size: medium;
+    box-sizing: border-box;
+    margin-bottom: 20px;
+    /* border: solid 4px var(--text-color); */
+}
+
+input:nth-of-type(1) {
+    border: solid 4px var(--secondary-yellow);
+}
+input:nth-of-type(2) {
+    border: solid 4px var(--secondary-green);
+}
+input:nth-of-type(3) {
+    border: solid 4px var(--accent-color);
+}
+input:nth-of-type(4) {
+    border: solid 4px var(--secondary-yellow);
+}
+input:nth-of-type(5) {
+    border: solid 4px var(--secondary-green);
+}
+
+
+input::placeholder {
+    font-size: medium;
+    color: var(--text-color);
+}
+
+input[type=checkbox] {
+    margin: auto;
+    height: 40px;
+    width: auto;
+    margin-right: 20px;
+    width: 25px;
+    height: 25px;
+    outline: var(--secondary-green);
+}
+
+input[type=submit] {
+    width: 100%;
+    margin-top: 20px;
+    background-color: transparent;
+    border: solid 4px var(--accent-color);
+    background: linear-gradient(to left, transparent 50%, var(--accent-color) 50%);
+    background-position: right;
+    background-size: 200% 100%;
+    transition: all 0.4s ease;
+}
+
+input[type=submit]:hover {
+    background-position: left;
+    cursor: pointer;
+}
