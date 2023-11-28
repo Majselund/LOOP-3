@@ -12,7 +12,7 @@
     <?php include('../../includes/navigation.php') ?>
     <main>
         <div id="main" class="content container mx-auto">
-            <h1>GDPR</h1>
+            <h1>SPONSOR SIDE</h1>
             <div class="prose mx-auto">
                 <p>Her skal der være en tekst med information til dem der er interesserede i at blive sponsorer. <br> Derudover skal der være kontaktinformation i form af mail til "innovationsdage"</p>
             </div>
