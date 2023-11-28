@@ -15,7 +15,7 @@ if (isset($_SESSION["user_id"])) {
     <title>Create User</title>
     <meta charset="UTF-8" />
     <link rel="stylesheet" href="../styles/global.css">
-    <link rel="stylesheet" href="../admin/create_user.css">
+    <link rel="stylesheet" href="./create_user.css">
     <script src="https://unpkg.com/just-validate@latest/dist/just-validate.production.min.js" defer></script>
     <script src="./js/validation.js" defer></script>
 </head>
