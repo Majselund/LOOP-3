@@ -35,7 +35,7 @@ $stmt->bind_param(
 );
 
 if ($stmt->execute()) {
-    header("Location: user_created.php");
+    header("Location: ../user_created.php");
     exit;
 } else {
     if ($mysqli->errno === 1062) {

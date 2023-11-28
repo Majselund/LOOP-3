@@ -9,7 +9,7 @@ if (isset($_SESSION["user_id"])) {
 }
 ?>
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
     <title>Create User</title>

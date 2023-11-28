@@ -5,7 +5,7 @@
                 <a href="/index.php">Innovations<strong>dag</strong></a>
             </div>
             <div>
-                <a href="/admin/index.php">Home</a> | <a href="/admin/create_user.php">Opret bruger</a> | <a href="/admin/includes/logout.php">Log ud</a>
+                <a href="/admin/index.php">Home</a> | <a href="/admin/create_user.php">Opret bruger</a> | <a href="/admin/page_overview.php">Rediger side</a> | <a href="/admin/includes/logout.php">Log ud</a>
             </div>
         </div>
     </nav>
