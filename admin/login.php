@@ -52,6 +52,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 			</form>
 		</div>
 	</main>
+	<?php include('../../admin/includes/footer_admin.php') ?>
 </body>
 
 </html>

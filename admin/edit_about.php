@@ -30,6 +30,7 @@ if (isset($_SESSION["user_id"])) {
             <input type="submit" name="submit" value="GEM">
         </form>
     </main>
+    <?php include('../../admin/includes/footer_admin.php') ?>
 </body>
 
 </html>

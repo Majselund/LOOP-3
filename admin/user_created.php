@@ -15,6 +15,7 @@
       <p>User created.</p>
     </div>
   </main>
+  <?php include('../../admin/includes/footer_admin.php') ?>
 </body>
 
 </html>

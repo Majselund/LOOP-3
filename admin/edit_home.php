@@ -28,6 +28,7 @@ if (isset($_SESSION["user_id"])) {
         <textarea id="page_editor"></textarea>
         <button>Gem</button>
     </main>
+    <?php include('../../admin/includes/footer_admin.php') ?>
 </body>
 
 </html>

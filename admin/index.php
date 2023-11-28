@@ -38,7 +38,7 @@ if (isset($_SESSION["user_id"])) {
             </div>
         </main>
     <?php endif; ?>
-    <?php include('../../includes/footer.php') ?>
+    <?php include('../../admin/includes/footer_admin.php') ?>
 </body>
 
 </html>

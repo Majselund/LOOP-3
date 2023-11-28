@@ -31,6 +31,7 @@ if (isset($_SESSION["user_id"])) {
         <p>Sponsorer</p>
         <p>Galleri</p>
     </main>
+    <?php include('../../admin/includes/footer_admin.php') ?>
 </body>
 
 </html>

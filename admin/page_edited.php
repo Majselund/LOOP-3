@@ -15,6 +15,7 @@
       <p>Siden er gemt</p>
     </div>
   </main>
+  <?php include('../../admin/includes/footer_admin.php') ?>
 </body>
 
 </html>
