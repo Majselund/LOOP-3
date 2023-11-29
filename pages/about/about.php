@@ -19,6 +19,7 @@
                 <img class="block mx-auto prose" src="/images/Picture 2.png" alt=""> <br><br>
                 <p class="prose mx-auto">Eleverne får indsigt i, hvordan en virksomhed kan arbejde med innovation og får en introduktion til værktøjer, som de kan bruge i deres fremtidige virke. <br>Til innovations<strong>dag</strong> får eleverne opstillet en case hvorfra de skal finde på “den gode ide”. De vil introduceres til “idegenereringsprocessen”, indebærende værkrøtjer og metoder til at løse dagens case.</p> <br>
                 <h2>Sidste års case</h2>
+                <h2>Program</h2>
                 <p></p>
             </div>
         </div>

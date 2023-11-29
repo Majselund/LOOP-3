@@ -17,21 +17,23 @@ if (isset($_SESSION["user_id"])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rediger side</title>
     <link rel="stylesheet" href="../styles/global.css">
+    <link rel="stylesheet" href="/admin/page_overview.css">
+
 </head>
 
 <body>
     <?php include('includes/navigation.php') ?>
     <main>
-        <div class="flex">
-            <p>Hjem</p><a href="./edit_home.php">Rediger</a>
-        </div>
-        <div class="flex">
-            <p>Om os</p><a href="./edit_about.php">Rediger</a>
-        </div>
-        <p>Sponsorer</p>
-        <p>Galleri</p>
+        <div id="main" class="content container mx-auto">
+            <h1>Rediger side</h1>
+            <div id="main" class="content container mx-auto prose flex">
+                <a href="./edit_home.php"><button>Hjem</button></a>
+                <a href="./edit_about.php"><button>Om os</button></a>
+                <a href="./edit_about.php"><button>Sponsorer</button></a>
+                <a href="./edit_about.php"><button>Galleri</button></a>
+            </div>
     </main>
-    <?php include('../../admin/includes/footer_admin.php') ?>
+    <?php include('includes/footer_admin.php') ?>
 </body>
 
 </html>

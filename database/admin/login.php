@@ -32,6 +32,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 	<title>Login</title>
 	<meta charset="UTF-8">
 	<link rel="stylesheet" href="../styles/global.css">
+	<link rel="stylesheet" href="./login.css">
 </head>
 
 <body>
@@ -41,18 +42,23 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 		<em>Invalid login</em>
 	<?php endif; ?>
 	<main>
-		<div class="container mx-auto">
+		<div id="main" class="content container mx-auto">
 			<h1>Login</h1>
-			<form method="post">
-				<label for="email">email</label>
-				<input type="email" name="email" id="email" value="<?= htmlspecialchars($_POST["email"] ?? "") ?>">
-				<label for="password">Password</label>
-				<input type="password" name="password" id="password">
-				<button>Log in</button>
-			</form>
-		</div>
+			<div id="main" class="content container mx-auto prose">
+				<form method="post">
+					<div>
+						<label for="email">Email</label>
+						<input type="email" name="email" id="email" value="<?= htmlspecialchars($_POST["email"] ?? "") ?>">
+					</div>
+					<div>
+						<label for="password">Password</label>
+						<input type="password" name="password" id="password">
+					</div>
+					<button>Log in</button>
+				</form>
+			</div>
 	</main>
-	<?php include('../../admin/includes/footer_admin.php') ?>
+	<?php include('includes/footer_admin.php') ?>
 </body>
 
 </html>

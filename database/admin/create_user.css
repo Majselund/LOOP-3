@@ -15,8 +15,8 @@ input:nth-of-type(1) {
 input:nth-of-type(2) {
     border: solid 4px var(--secondary-green);
 }
-input:nth-of-type(3) {var(--secondary-green)
-    border: solid 4px ;
+input:nth-of-type(3) {
+    border: solid 4px var(--secondary-green);
 }
 input:nth-of-type(4) {
     border: solid 4px var(--secondary-green);
@@ -28,8 +28,7 @@ input::placeholder {
     color: var(--text-color);
 }
 
-
-button {
+input[type=submit] {
     width: 100%;
     margin-top: 20px;
     background-color: transparent;
@@ -40,7 +39,7 @@ button {
     transition: all 0.4s ease;
 }
 
-button:hover {
+input[type=submit]:hover {
     background-position: left;
     cursor: pointer;
 }

@@ -33,7 +33,7 @@ if (isset($_SESSION["user_id"])) {
                             <input type="text" id="name" name="name" />
                         </div>
                         <div>
-                            <label for="email">email</label>
+                            <label for="email">Email</label>
                             <input type="email" id="email" name="email" />
                         </div>
                         <div>
@@ -44,7 +44,7 @@ if (isset($_SESSION["user_id"])) {
                             <label for="password_confirmation">Repeat password</label>
                             <input type="password" id="password_confirmation" name="password_confirmation" />
                         </div>
-                        <button>Sign up</button>
+                        <input type="submit" value="SUBMIT">
                     </form>
                 </div>
             </div>
@@ -56,7 +56,7 @@ if (isset($_SESSION["user_id"])) {
             </div>
         </main>
     <?php endif; ?>
-    <?php include('/admin/includes/footer_admin.php') ?>
+    <?php include('includes/footer_admin.php') ?>
 </body>
 
 </html>

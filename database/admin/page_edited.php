@@ -2,7 +2,7 @@
 <html>
 
 <head>
-  <title>Create user</title>
+  <title>Side redigeret</title>
   <meta charset="UTF-8" />
   <link rel="stylesheet" href="../styles/global.css">
 </head>
@@ -11,11 +11,11 @@
   <?php include('includes/navigation.php') ?>
   <main>
     <div class="container mx-auto">
-      <h1>Create user</h1>
-      <p>User created.</p>
+      <h1>Side redigeret</h1>
+      <p>Siden er gemt</p>
     </div>
   </main>
-  <?php include('../../admin/includes/footer_admin.php') ?>
+  <?php include('includes/footer_admin.php') ?>
 </body>
 
 </html>
