@@ -17,7 +17,7 @@ if (isset($_SESSION["user_id"])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rediger side</title>
     <link rel="stylesheet" href="../styles/global.css">
-    <link rel="stylesheet" href="edit_sponsor.css">
+    <link rel="stylesheet" href="./edit_sponsor.css">
     <script type="text/javascript" src='https://cdn.tiny.cloud/1/i2q56l2uu4wsqfm78zlcivot3qxhn06jbgpapqk5b0h1o3vd/tinymce/6/tinymce.min.js'></script>
     <script src="./js/tinymce.js"></script>
 </head>
@@ -33,6 +33,7 @@ if (isset($_SESSION["user_id"])) {
                     <input type="text" name="sponsor" placeholder="Indsæt her">
                     <textarea id="page_editor"></textarea>
                     <label for="image1">Image</label>
+                    <!-- skal id og class være med i nedenstående eller kan det fjernes? -->
                     <input type="file" name="images[]" id="image1" class="form-control">
                     <input type="submit" name="submit" value="GEM">
                 </form>

@@ -27,8 +27,11 @@ if (isset($_SESSION["user_id"])) {
         <div id="main" class="content container mx-auto">
             <h1>Rediger Om os</h1>
             <div id="main" class="content container mx-auto prose">
-                <form method="post" action="./includes/save_page.php">
+                <form method="post" action="./includes/save_page.php" <label for="sponsor">Skift overskirft</label><br>
+                    <input type="text" name="sponsor" placeholder="Indsæt her">
                     <textarea id="page_editor"></textarea>
+                    <label for="image1">Image</label>
+                    <input type="file" name="images[]" id="image1" class="form-control">
                     <input type="submit" name="submit" value="GEM">
                 </form>
             </div>
