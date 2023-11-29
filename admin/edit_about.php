@@ -24,11 +24,14 @@ if (isset($_SESSION["user_id"])) {
 <body>
     <?php include('includes/navigation.php') ?>
     <main>
-        <h2>Rediger Om os</h2>
-        <form method="post" action="./includes/save_page.php">
-            <textarea id="page_editor"></textarea>
-            <input type="submit" name="submit" value="GEM">
-        </form>
+        <div id="main" class="content container mx-auto">
+            <h1>Rediger Om os</h1>
+            <div id="main" class="content container mx-auto prose">
+                <form method="post" action="./includes/save_page.php">
+                    <textarea id="page_editor"></textarea>
+                    <input type="submit" name="submit" value="GEM">
+                </form>
+            </div>
     </main>
     <?php include('includes/footer_admin.php') ?>
 </body>
