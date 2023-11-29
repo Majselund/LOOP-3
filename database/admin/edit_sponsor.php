@@ -17,21 +17,18 @@ if (isset($_SESSION["user_id"])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rediger side</title>
     <link rel="stylesheet" href="../styles/global.css">
-    <link rel="stylesheet" href="/admin/page_overview.css">
-
+    <script type="text/javascript" src='https://cdn.tiny.cloud/1/i2q56l2uu4wsqfm78zlcivot3qxhn06jbgpapqk5b0h1o3vd/tinymce/6/tinymce.min.js'></script>
+    <script src="./js/tinymce.js"></script>
 </head>
 
 <body>
     <?php include('includes/navigation.php') ?>
     <main>
-        <div id="main" class="content container mx-auto">
-            <h1>Rediger side</h1>
-            <div id="main" class="content container mx-auto prose flex">
-                <a href="./edit_home.php"><button>Hjem</button></a>
-                <a href="./edit_about.php"><button>Om os</button></a>
-                <a href="./edit_sponsor.php"><button>Sponsorer</button></a>
-                <a href="./edit_gallery.php"><button>Galleri</button></a>
-            </div>
+        <h2>Rediger Sponsorer</h2>
+        <form method="post" action="./includes/save_page.php">
+            <textarea id="page_editor"></textarea>
+            <input type="submit" name="submit" value="GEM">
+        </form>
     </main>
     <?php include('includes/footer_admin.php') ?>
 </body>
