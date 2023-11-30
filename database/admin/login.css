@@ -22,11 +22,14 @@ input::placeholder {
     color: var(--text-color);
 }
 
-button {
+input[type=submit] {
     font-size: large;
     background-color: var(--secondary-green);
     width: 150px;
     height: 40px;
-    margin: 10px;   
-    left:0px;
+    left: 0px;
+}
+
+button:hover {
+    cursor: pointer;
 }
