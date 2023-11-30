@@ -46,17 +46,14 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 			<h1>Login</h1>
 			<div id="main" class="content container mx-auto prose">
 				<form method="post">
-
 					<label for="email">Email</label>
 					<input type="email" name="email" id="email" value="<?= htmlspecialchars($_POST["email"] ?? "") ?>">
-
-
 					<label for="password">Password</label>
 					<input type="password" name="password" id="password">
-
 					<input type="submit" name="submit" value="Log ind">
 				</form>
 			</div>
+		</div>
 	</main>
 	<?php include('includes/footer_admin.php') ?>
 </body>

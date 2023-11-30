@@ -37,6 +37,8 @@ if (isset($_SESSION["user_id"])) {
                     <input type="file" name="images[]" id="image1" class="form-control">
                     <input type="submit" name="submit" value="GEM">
                 </form>
+            </div>
+        </div>
     </main>
     <?php include('includes/footer_admin.php') ?>
 </body>
