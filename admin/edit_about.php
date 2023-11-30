@@ -17,6 +17,7 @@ if (isset($_SESSION["user_id"])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rediger side</title>
     <link rel="stylesheet" href="../styles/global.css">
+    <link rel="stylesheet" href="./edit_about.css">
     <script type="text/javascript" src='https://cdn.tiny.cloud/1/i2q56l2uu4wsqfm78zlcivot3qxhn06jbgpapqk5b0h1o3vd/tinymce/6/tinymce.min.js'></script>
     <script src="./js/tinymce.js"></script>
 </head>
@@ -35,6 +36,7 @@ if (isset($_SESSION["user_id"])) {
                     <input type="submit" name="submit" value="GEM">
                 </form>
             </div>
+        </div>
     </main>
     <?php include('includes/footer_admin.php') ?>
 </body>
