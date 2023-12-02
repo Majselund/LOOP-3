@@ -16,8 +16,6 @@ if (isset($_SESSION["user_id"])) {
     <meta charset="UTF-8" />
     <link rel="stylesheet" href="../styles/global.css">
     <link rel="stylesheet" href="./create_user.css">
-    <script src="https://unpkg.com/just-validate@latest/dist/just-validate.production.min.js" defer></script>
-    <script src="./js/validation.js" defer></script>
 </head>
 
 <body>
@@ -27,7 +25,7 @@ if (isset($_SESSION["user_id"])) {
             <div id="main" class="content container mx-auto">
                 <h1>Opret bruger</h1>
                 <div id="main" class="content container mx-auto prose">
-                    <form action="process-signup.php" method="post" id="signup">
+                    <form action="./includes/process-signup.php" method="post" id="signup">
                         <div>
                             <label for="name">Name</label>
                             <input type="text" id="name" name="name" />

@@ -1,3 +1,18 @@
+<?php
+$mysqli = require __DIR__ . "/../../database/config.php";
+$result = $mysqli->query("SELECT * FROM pages WHERE page = 'about'");
+
+if ($result->num_rows > 0) {
+    while ($page = $result->fetch_assoc()) {
+        $title = $page['title'];
+        $text1 = $page['text1'];
+        $text2 = $page['text2'];
+        $imageName = $page["image"];
+        $imageURL = '/../../images/' . $page["image"];
+    }
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -13,14 +28,15 @@
     <?php include('../../includes/navigation.php') ?>
     <main>
         <div class="content container mx-auto">
-            <h1>Om innovationsdagene</h1>
+            <h1>
+                <?php echo $title ?>
+            </h1>
             <div class="prose mx-auto">
-                <p>Alle ungdomsuddannelsesinstitutioner fra regionen inviteres til en dag, der sætter innovation og kreativ tænkning i højsædet. Arrangementet giver eleverne mulighed for at prøve kræfter med kreative processer sat i relation til koncept- og produktudvikling </p>
-                <img class="block mx-auto prose" src="/images/Picture 2.png" alt=""> <br><br>
-                <p class="prose mx-auto">Eleverne får indsigt i, hvordan en virksomhed kan arbejde med innovation og får en introduktion til værktøjer, som de kan bruge i deres fremtidige virke. <br>Til innovations<strong>dag</strong> får eleverne opstillet en case hvorfra de skal finde på “den gode ide”. De vil introduceres til “idegenereringsprocessen”, indebærende værkrøtjer og metoder til at løse dagens case.</p> <br>
-                <h2>Sidste års case</h2>
-                <h2>Program</h2>
-                <p></p>
+                <?php echo $text1 ?>
+            </div>
+            <img src="<?php echo $imageURL; ?>" alt="<?php echo $imageName; ?>" class="block mx-auto prose" />
+            <div class="prose mx-auto">
+                <?php echo $text2 ?>
             </div>
         </div>
     </main>

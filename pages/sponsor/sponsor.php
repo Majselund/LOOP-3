@@ -1,3 +1,20 @@
+<?php
+
+$page = 'sponsor';
+$mysqli = require __DIR__ . "/../../database/config.php";
+$result = $mysqli->query("SELECT * FROM pages WHERE page = '" . $page . "'");
+
+if ($result->num_rows > 0) {
+    while ($page = $result->fetch_assoc()) {
+        $title = $page['title'];
+        $text1 = $page['text1'];
+        $text2 = $page['text2'];
+        $imageName = $page["image"];
+        $imageURL = '/../../images/' . $page["image"];
+    }
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -12,9 +29,11 @@
     <?php include('../../includes/navigation.php') ?>
     <main>
         <div id="main" class="content container mx-auto">
-            <h1>SPONSOR SIDE</h1>
+            <h1>
+                <?php echo $title ?>
+            </h1>
             <div class="prose mx-auto">
-                <p>Her skal der være en tekst med information til dem der er interesserede i at blive sponsorer. <br> Derudover skal der være kontaktinformation i form af mail til "innovationsdage"</p>
+                <?php echo $text1 ?>
             </div>
         </div>
     </main>
