@@ -122,7 +122,7 @@ if (isset($_POST['submit'])) {
                         <input type="text" id="title" name="title" value="<?php echo $title ?>">
                         <textarea name="page_editor1" id="page_editor"><?php echo $text1 ?></textarea>
                         <?php if ($imageName) { ?>
-                            <img src="<?php echo $imageURL; ?>" alt="<?php echo $imageName; ?>" class="block mx-auto prose" />
+                            <img src="<?php echo $imageURL; ?>" alt="<?php echo $imageName; ?>" class="block prose" height="300px" />
                         <?php } else { ?>
                             <p>Intet billede sat</p>
                         <?php } ?>

@@ -47,7 +47,7 @@ if ($result->num_rows > 0) {
                 <?php echo $title ?>
             </h1>
             <div class="prose mx-auto">
-                <?php echo $text ?>
+                <?php echo $text1 ?>
             </div><br>
             <img src="<?php echo $imageURL; ?>" alt="<?php echo $imageName; ?>" class="block mx-auto prose" />
         </div>
