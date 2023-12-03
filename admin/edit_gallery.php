@@ -71,13 +71,17 @@ if (isset($_POST['submit'])) {
     <?php include('includes/navigation.php') ?>
     <main>
         <div id="main" class="content container mx-auto">
-            <h1>Rediger Galleri</h1>
+            <h1>Upload billeder til galleri</h1>
             <div id="main" class="content container mx-auto prose">
+                <?php if (!empty($statusMsg)) { ?>
+                    <p class="stmsg"><?php echo $statusMsg; ?></p>
+                <?php } ?>
                 <form method="post" action="" enctype="multipart/form-data">
                     <label for="image">Image</label>
-                    <input type="file" name="image" id="image" multiple>
+                    <input type="file" name="image[]" id="image" multiple>
                     <input type="submit" name="submit" value="GEM">
                 </form>
+                <p>Gå til galleri siden for at slette billeder.</p>
             </div>
     </main>
     <?php include('includes/footer_admin.php') ?>

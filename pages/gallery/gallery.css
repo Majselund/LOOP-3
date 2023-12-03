@@ -10,6 +10,7 @@ figure {
     grid-template-rows: 1fr auto;
     margin-bottom: 10px;
     break-inside: avoid;
+    align-items: end;
 }
 
 button {
@@ -65,4 +66,31 @@ img {
 
 .modal-image:hover {
     cursor: zoom-out;
+}
+
+.delete {
+    position: absolute;
+}
+
+.delete button {
+    
+    border: none;
+}
+
+.delete button:hover {
+    cursor: pointer;
+}
+
+.delete svg {
+    padding: 10px;
+    width: 25px;
+    height: 25px;
+    color: rgb(225, 98, 98);
+}
+
+.delete svg:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+    border-radius: 10%;
+    padding: 10px;
+    color: red;
 }

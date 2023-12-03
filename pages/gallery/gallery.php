@@ -1,3 +1,13 @@
+<?php
+session_start();
+
+if (isset($_SESSION["user_id"])) {
+    $mysqli = require __DIR__ . "/../../database/config.php";
+    $getUser = $mysqli->query("SELECT * FROM users WHERE id = {$_SESSION["user_id"]}");
+    $user = $getUser->fetch_assoc();
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -28,6 +38,7 @@
                     $imageURL = '/../../images/gallery/' . $row["image"];
                     echo "<figure>";
                     echo "<button id='imageButton" . $i . "'><img src='" . $imageURL . "' alt='Open' width='750'></button>";
+                    if (isset($user)) echo "<a class='delete' href='delete.php?id=" . $row['image'] . "'><button><svg stroke='currentColor' fill='currentColor' stroke-width='0' viewBox='0 0 24 24' height='1em' width='1em' xmlns='http://www.w3.org/2000/svg'><path d='M7 4V2H17V4H22V6H20V21C20 21.5523 19.5523 22 19 22H5C4.44772 22 4 21.5523 4 21V6H2V4H7ZM6 6V20H18V6H6ZM9 9H11V17H9V9ZM13 9H15V17H13V9Z'></path></svg></button></a>";
                     echo "</figure>";
                     echo "<div id='imageModal" . $i . "' class='modal'>";
                     echo "<div id='modalContent" . $i . "' class='modal-content'><img id='bigImage" . $i . "' class='modal-image' src='" . $imageURL . "' alt='' width='1400'></div>";
@@ -35,19 +46,6 @@
                 }
             }
             ?>
-            <!-- The following element will be created for each image with JavaScript -->
-            <!-- Creating figure component -->
-            <!-- <figure>
-                <button id="imageButton0">
-                    <img src="../../images/IMG_0002.png" alt="Open" width="570">
-                </button>
-            </figure> -->
-            <!-- Creating modal component -->
-            <!-- <div id="imageModal0" class="modal">
-                <div class="modal-content">
-                    <img class="modal-image" src="../../images/IMG_0002.png" alt="" width="1400">
-                </div>
-            </div>  -->
         </div>
     </main>
     <?php include('../../includes/footer.php') ?>
