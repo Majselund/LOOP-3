@@ -65,62 +65,45 @@ const images = [
 ]
 
 const masonry = document.getElementById('masonry');
-const imagesPerPage = 12;
-let currentPage = 0;
 
-function loadImages(startIndex, endIndex) {
-    for (let i = startIndex; i < endIndex; i++) {
-        const figure = document.createElement('figure');
-        masonry.appendChild(figure);
+for (let i = 1; i < images.length; i++) {
+    // Creating figure component
+    // const figure = document.createElement('figure')
+    // masonry.appendChild(figure);
 
-        const button = document.createElement('button');
-        button.id = `imageButton${i}`;
-        figure.appendChild(button);
+    const button = document.getElementById(`imageButton${i}`)
+    // button.id = `imageButton${i}`;
+    // figure.appendChild(button);
 
-        const img = document.createElement('img');
-        img.src = images[i];
-        img.alt = "Open";
-        img.width = 570;
-        button.appendChild(img);
+    // const img = document.createElement('img');
+    // img.src = images[i];
+    // img.alt = "Open";
+    // img.width = 570;
+    // button.appendChild(img)
 
-        const imageModal = document.createElement('div');
-        imageModal.id = `imageModal${i}`;
-        imageModal.className = "modal";
-        masonry.appendChild(imageModal);
+    // Creating modal component
+    const imageModal = document.getElementById(`imageModal${i}`);
+    // imageModal.id = `imageModal${i}`;
+    // imageModal.className = "modal";
+    // masonry.appendChild(imageModal);
 
-        const modalContent = document.createElement('div');
-        modalContent.className = "modal-content";
-        imageModal.appendChild(modalContent);
+    const modalContent = document.getElementById(`modalContent${i}`);
+    // modalContent.className = "modal-content";
+    // imageModal.appendChild(modalContent);
 
-        const bigImage = document.createElement('img');
-        bigImage.className = "modal-image";
-        bigImage.src = images[i];
-        modalContent.appendChild(bigImage);
+    const bigImage = document.getElementById(`bigImage${i}`);
+    // bigImage.className = "modal-image";
+    // bigImage.src = images[i];
+    // modalContent.appendChild(bigImage);
 
-        button.onclick = function showModal() {
-            imageModal.style.display = "block";
-        };
-
-        window.addEventListener("click", function (event) {
-            if (event.target == imageModal || event.target == modalContent || event.target == bigImage) {
-                imageModal.style.display = "none";
-            }
-        });
+    // Modal open and close logic
+    button.onclick = function showModal() {
+        imageModal.style.display = "block";
     }
+
+    window.addEventListener("click", function (event) {
+        if (event.target == imageModal | event.target == modalContent | event.target == bigImage) {
+            imageModal.style.display = "none";
+        }
+    })
 }
-
-loadImages(0, imagesPerPage);
-
-const loadMoreButton = document.getElementById('loadMoreButton');
-
-loadMoreButton.addEventListener('click', function () {
-    currentPage++;
-    const startIndex = currentPage * imagesPerPage;
-    const endIndex = startIndex + imagesPerPage;
-
-    if (startIndex < images.length) {
-        loadImages(startIndex, endIndex);
-    } else {
-        loadMoreButton.disabled = true;
-    }
-});

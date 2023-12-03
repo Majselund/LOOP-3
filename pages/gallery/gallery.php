@@ -17,6 +17,24 @@
             <h1>Galleri</h1>
         </div>
         <div id="masonry" class="masonry">
+            <?php
+            $mysqli = require __DIR__ . "/../../database/config.php";
+            $result = $mysqli->query("SELECT * FROM gallery");
+
+            if ($result->num_rows > 0) {
+                $i = 0;
+                while ($row = $result->fetch_assoc()) {
+                    $i++;
+                    $imageURL = '/../../images/gallery/' . $row["image"];
+                    echo "<figure>";
+                    echo "<button id='imageButton" . $i . "'><img src='" . $imageURL . "' alt='Open' width='750'></button>";
+                    echo "</figure>";
+                    echo "<div id='imageModal" . $i . "' class='modal'>";
+                    echo "<div id='modalContent" . $i . "' class='modal-content'><img id='bigImage" . $i . "' class='modal-image' src='" . $imageURL . "' alt='' width='1400'></div>";
+                    echo "</div>";
+                }
+            }
+            ?>
             <!-- The following element will be created for each image with JavaScript -->
             <!-- Creating figure component -->
             <!-- <figure>
@@ -30,9 +48,6 @@
                     <img class="modal-image" src="../../images/IMG_0002.png" alt="" width="1400">
                 </div>
             </div>  -->
-        </div>
-        <div class="flex">
-            <button id="loadMoreButton">Load more</button>
         </div>
     </main>
     <?php include('../../includes/footer.php') ?>

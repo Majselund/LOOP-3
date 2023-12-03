@@ -3,9 +3,55 @@ session_start();
 
 if (isset($_SESSION["user_id"])) {
     $mysqli = require __DIR__ . "/../database/config.php";
-    $sql = "SELECT * FROM users WHERE id = {$_SESSION["user_id"]}";
-    $result = $mysqli->query($sql);
+    $result = $mysqli->query("SELECT * FROM users WHERE id = {$_SESSION["user_id"]}");
     $user = $result->fetch_assoc();
+}
+
+$targetDir = '/var/www/innovationsdage.dk/public_html/images/gallery/';
+$statusMsg = '';
+
+if (isset($_POST['submit'])) {
+
+    if (!empty($_FILES["image"]["name"]) && is_array($_FILES["image"]["name"])) {
+        $imageNames = $_FILES["image"]["name"];
+        $allowTypes = array('jpg', 'png', 'jpeg', 'gif', 'avif', 'webp');
+        $uploadStatus = [];
+
+        foreach ($imageNames as $key => $imageName) {
+            // Check if the file type is allowed
+            $imageType = pathinfo($imageName, PATHINFO_EXTENSION);
+            if (in_array($imageType, $allowTypes)) {
+                $targetImagePath = $targetDir . $imageName;
+
+                // Attempt to move the uploaded file
+                if (move_uploaded_file($_FILES["image"]["tmp_name"][$key], $targetImagePath)) {
+                    // Insert the image into the database
+                    $sql = "INSERT INTO gallery (image) VALUES (?)";
+                    $stmt = $mysqli->stmt_init();
+
+                    if (!$stmt->prepare($sql)) {
+                        $uploadStatus[] = "SQL error for $imageName: " . $mysqli->error;
+                    } else {
+                        $stmt->bind_param("s", $imageName);
+                        if ($stmt->execute()) {
+                            $uploadStatus[] = "File $imageName uploaded successfully.";
+                        } else {
+                            $uploadStatus[] = "Error inserting $imageName into the database.";
+                        }
+                    }
+                } else {
+                    $uploadStatus[] = "Error uploading $imageName.";
+                }
+            } else {
+                $uploadStatus[] = "Invalid file type for $imageName.";
+            }
+        }
+
+        // Combine upload status messages into one message
+        $statusMsg = implode("<br>", $uploadStatus);
+    } else {
+        $statusMsg = "No images selected.";
+    }
 }
 ?>
 <!DOCTYPE html>
@@ -27,8 +73,9 @@ if (isset($_SESSION["user_id"])) {
         <div id="main" class="content container mx-auto">
             <h1>Rediger Galleri</h1>
             <div id="main" class="content container mx-auto prose">
-                <form method="post" action="./includes/save_page.php">
-                    <textarea id="page_editor"></textarea>
+                <form method="post" action="" enctype="multipart/form-data">
+                    <label for="image">Image</label>
+                    <input type="file" name="image" id="image" multiple>
                     <input type="submit" name="submit" value="GEM">
                 </form>
             </div>
