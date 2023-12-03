@@ -7,7 +7,7 @@
     <title>Gallery</title>
     <link rel="stylesheet" href="../../styles/global.css">
     <link rel="stylesheet" href="gallery.css">
-    <script defer src="../../javascript/modal.js"></script>
+    <script defer src="../../js/gallery.js"></script>
 </head>
 
 <body>
@@ -30,6 +30,9 @@
                     <img class="modal-image" src="../../images/IMG_0002.png" alt="" width="1400">
                 </div>
             </div>  -->
+        </div>
+        <div class="flex">
+            <button id="loadMoreButton">Load more</button>
         </div>
     </main>
     <?php include('../../includes/footer.php') ?>

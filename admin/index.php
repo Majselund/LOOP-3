@@ -3,9 +3,8 @@ session_start();
 
 if (isset($_SESSION["user_id"])) {
     $mysqli = require __DIR__ . "/../database/config.php";
-    $sql = "SELECT * FROM users WHERE id = {$_SESSION["user_id"]}";
-    $result = $mysqli->query($sql);
-    $user = $result->fetch_assoc();
+    $getUser = $mysqli->query("SELECT * FROM users WHERE id = {$_SESSION["user_id"]}");
+    $user = $getUser->fetch_assoc();
 }
 ?>
 <!DOCTYPE html>
