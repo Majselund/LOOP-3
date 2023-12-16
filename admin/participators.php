@@ -45,6 +45,7 @@ if (isset($_SESSION["user_id"])) {
                     echo "<td><strong>Konktaktperson</strong></td>";
                     echo "<td><strong>Telefon</strong></td>";
                     echo "<td><strong>Email</strong></td>";
+                    echo "<td><strong>Slet tilmelding</strong></td>";
                     echo "</tr>";
                     while ($row = $result->fetch_assoc()) {
                         echo "<tr>";
@@ -53,6 +54,7 @@ if (isset($_SESSION["user_id"])) {
                         echo "<td>" . $row['kontaktperson'] . "</td>";
                         echo "<td>" . $row['telefonnummer'] . "</td>";
                         echo "<td>" . $row['emailadresse'] . "</td>";
+                        echo "<td><a class='delete' href='delete_participator.php?id=" . $row['id'] . "'><button><svg stroke='currentColor' fill='currentColor' stroke-width='0' viewBox='0 0 24 24' height='1em' width='1em' xmlns='http://www.w3.org/2000/svg'><path d='M7 4V2H17V4H22V6H20V21C20 21.5523 19.5523 22 19 22H5C4.44772 22 4 21.5523 4 21V6H2V4H7ZM6 6V20H18V6H6ZM9 9H11V17H9V9ZM13 9H15V17H13V9Z'></path></svg></button></a></td>";
                         echo "</tr>";
                     }
                 }

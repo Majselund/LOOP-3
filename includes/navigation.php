@@ -29,7 +29,7 @@
                     <a href="/pages/signup/signup.php">Tilmelding</a>
                 </div>
                 <div>
-                    <a href="#contact">Kontakt</a>
+                    <button id="buttonContact" onclick="closeScrollBottom();">Kontakt</button>
                 </div>
             </div>
         </div>

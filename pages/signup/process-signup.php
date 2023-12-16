@@ -15,27 +15,26 @@ if (!$terms) {
     die("Sæt kryds i checkbox");
 }
 
-$host = "mysql37.unoeuro.com";
-$dbname = "innovationsdage_dk_db";
-$username = "innovationsdage_dk";
-$password = "rhmncHfe64RtDd5Bgz2A";
-
-$db = mysqli_connect($host, $username, $password, $dbname);
-
-if (mysqli_connect_errno()) {
-    die("Connection error: " . mysqli_connect_error());
-}
-
+$mysqli = require __DIR__ . "/../../database/config.php";
 $sql = "INSERT INTO tilmeldinger (uddannelsessted, antal_elever, kontaktperson, telefonnummer, emailadresse) VALUES (?, ?, ?, ?, ?)";
+$stmt = $mysqli->stmt_init();
 
-$stmt = mysqli_stmt_init($db);
-
-if (!mysqli_stmt_prepare($stmt, $sql)) {
-    die("Error: " . mysqli_error($db));
+if (!$stmt->prepare($sql)) {
+    die("SQL error: " . $mysqli->error);
 }
 
-mysqli_stmt_bind_param($stmt, "sisis", $uddannelsessted, $antal_elever, $kontaktperson, $telefonnummer, $emailadresse);
+$stmt->bind_param(
+    "sisis",
+    $uddannelsessted,
+    $antal_elever,
+    $kontaktperson,
+    $telefonnummer,
+    $emailadresse
+);
 
-mysqli_stmt_execute($stmt);
-
-echo "Record saved.";
+if ($stmt->execute()) {
+    header("Location: ./signup_created.php");
+    exit;
+} else {
+    die($mysqli->error . " " . $mysqli->errno);
+}
