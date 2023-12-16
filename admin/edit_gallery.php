@@ -8,13 +8,14 @@ if (isset($_SESSION["user_id"])) {
 }
 
 $targetDir = '/var/www/innovationsdage.dk/public_html/images/gallery/';
+$thumbnailDir = '/var/www/innovationsdage.dk/public_html/images/thumbnails/';
 $statusMsg = '';
 
 if (isset($_POST['submit'])) {
 
     if (!empty($_FILES["image"]["name"]) && is_array($_FILES["image"]["name"])) {
         $imageNames = $_FILES["image"]["name"];
-        $allowTypes = array('jpg', 'png', 'jpeg', 'gif', 'avif', 'webp');
+        $allowTypes = array('jpg', 'png', 'jpeg', 'gif', 'webp');
         $uploadStatus = [];
 
         foreach ($imageNames as $key => $imageName) {
@@ -35,6 +36,22 @@ if (isset($_POST['submit'])) {
                         $stmt->bind_param("s", $imageName);
                         if ($stmt->execute()) {
                             $uploadStatus[] = "File $imageName uploaded successfully.";
+
+                            // Generate and save thumbnail
+                            $thumbnailPath = $thumbnailDir . 'thumb_' . $imageName;
+                            list($width, $height) = getimagesize($targetImagePath);
+
+                            // Determine thumbnail dimensions based on aspect ratio
+                            $thumbWidth = 750;
+                            $thumbHeight = floor($height * ($thumbWidth / $width));
+
+                            $thumb = imagecreatetruecolor($thumbWidth, $thumbHeight);
+                            $source = imagecreatefromjpeg($targetImagePath);
+                            imagecopyresized($thumb, $source, 0, 0, 0, 0, $thumbWidth, $thumbHeight, $width, $height);
+                            imagejpeg($thumb, $thumbnailPath);
+
+                            imagedestroy($thumb);
+                            imagedestroy($source);
                         } else {
                             $uploadStatus[] = "Error inserting $imageName into the database.";
                         }
