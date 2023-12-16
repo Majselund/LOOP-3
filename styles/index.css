@@ -1,9 +1,16 @@
 .hero {
-    display: flex;
+    display: none;
     position: relative;
 }
 
+@media (min-width: 768px) {
+    .hero {
+        display: block;
+    }
+}
+
 .hero img {
+    z-index: -1;
     position: absolute;
     inset: 0px;
     object-fit: cover;
@@ -36,14 +43,4 @@
 
 .hero a:hover {
     transform: scale(1.2);
-}
-
-button {
-    font-size: medium;
-    position: fixed;
-    bottom: 50px;
-    right: 50px;
-    background-color: bisque;
-    width: 150px;
-    height: 40px;
 }

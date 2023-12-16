@@ -1,9 +1,39 @@
+<script defer src="/js/hamburger.js"></script>
 <nav>
     <div class="container mx-auto navigation">
         <div>
             <a href="/index.php">Innovations<strong>dage</strong></a>
         </div>
-        <div>
+        <button id="hamburger-open" class="hamburger">
+            <svg stroke="currentColor" fill="none" stroke-width="0" viewBox="0 0 15 15" height="1.5em" width="1.5em" xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd" clip-rule="evenodd" d="M1.5 3C1.22386 3 1 3.22386 1 3.5C1 3.77614 1.22386 4 1.5 4H13.5C13.7761 4 14 3.77614 14 3.5C14 3.22386 13.7761 3 13.5 3H1.5ZM1 7.5C1 7.22386 1.22386 7 1.5 7H13.5C13.7761 7 14 7.22386 14 7.5C14 7.77614 13.7761 8 13.5 8H1.5C1.22386 8 1 7.77614 1 7.5ZM1 11.5C1 11.2239 1.22386 11 1.5 11H13.5C13.7761 11 14 11.2239 14 11.5C14 11.7761 13.7761 12 13.5 12H1.5C1.22386 12 1 11.7761 1 11.5Z" fill="currentColor"></path>
+            </svg>
+        </button>
+        <div id="menu-mobile" class="menu-mobile">
+            <div class="content">
+                <button id="hamburger-close" class="hamburger">
+                    <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 512 512" height="1.5em" width="1.5em" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M405 136.798L375.202 107 256 226.202 136.798 107 107 136.798 226.202 256 107 375.202 136.798 405 256 285.798 375.202 405 405 375.202 285.798 256z"></path>
+                    </svg>
+                </button>
+                <div>
+                    <a href="/index.php">Hjem</a>
+                </div>
+                <div>
+                    <a href="/pages/about/about.php">Om Innovationsdagene</a>
+                </div>
+                <div>
+                    <a href="/pages/gallery/gallery.php">Galleri</a>
+                </div>
+                <div>
+                    <a href="/pages/signup/signup.php">Tilmelding</a>
+                </div>
+                <div>
+                    <a href="#contact">Kontakt</a>
+                </div>
+            </div>
+        </div>
+        <div class="menu-desktop">
             <a href="/pages/about/about.php">Om Innovationsdagene</a> | <a href="/pages/gallery/gallery.php">Galleri</a> | <a href="/pages/signup/signup.php">Tilmelding</a> | <a href="#contact">Kontakt</a>
         </div>
     </div>

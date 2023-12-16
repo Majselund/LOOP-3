@@ -102,7 +102,7 @@ if (isset($_POST['submit'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rediger side</title>
     <link rel="stylesheet" href="../styles/global.css">
-    <link rel="stylesheet" href="./edit_about.css">
+    <link rel="stylesheet" href="./edit_page.css">
     <script type="text/javascript" src='https://cdn.tiny.cloud/1/i2q56l2uu4wsqfm78zlcivot3qxhn06jbgpapqk5b0h1o3vd/tinymce/6/tinymce.min.js'></script>
     <script src="./js/tinymce.js"></script>
 </head>
@@ -113,6 +113,7 @@ if (isset($_POST['submit'])) {
         <main>
             <div id="main" class="content container mx-auto">
                 <h1>Rediger siden: Hjem</h1>
+                <?php include('includes/second_nav.php') ?>
                 <div id="main" class="content container mx-auto prose">
                     <?php if (!empty($statusMsg)) { ?>
                         <p class="stmsg"><?php echo $statusMsg; ?></p>

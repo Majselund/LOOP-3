@@ -39,6 +39,13 @@ if (isset($_SESSION["user_id"])) {
 
                 if ($result->num_rows > 0) {
                     echo "<table>";
+                    echo "<tr>";
+                    echo "<td><strong>Uddannelsessted</strong></td>";
+                    echo "<td><strong>Antal Elever</strong></td>";
+                    echo "<td><strong>Konktaktperson</strong></td>";
+                    echo "<td><strong>Telefon</strong></td>";
+                    echo "<td><strong>Email</strong></td>";
+                    echo "</tr>";
                     while ($row = $result->fetch_assoc()) {
                         echo "<tr>";
                         echo "<td>" . $row['uddannelsessted'] . "</td>";

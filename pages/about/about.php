@@ -21,7 +21,6 @@ if ($result->num_rows > 0) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>About</title>
     <link rel="stylesheet" href="../../styles/global.css">
-    <link rel="stylesheet" href="about.css">
 </head>
 
 <body>
@@ -34,7 +33,7 @@ if ($result->num_rows > 0) {
             <div class="prose mx-auto">
                 <?php echo $text1 ?>
             </div>
-            <img src="<?php echo $imageURL; ?>" alt="<?php echo $imageName; ?>" class="block mx-auto prose" />
+            <img src="<?php echo $imageURL; ?>" alt="<?php echo $imageName; ?>" class="block mx-auto prose" width="100%" />
             <div class="prose mx-auto">
                 <?php echo $text2 ?>
             </div>

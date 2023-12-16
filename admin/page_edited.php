@@ -9,12 +9,20 @@
 
 <body>
   <?php include('includes/navigation.php') ?>
-  <main>
-    <div class="container mx-auto">
-      <h1>Side redigeret</h1>
-      <p>Siden er gemt</p>
-    </div>
-  </main>
+  <?php if (isset($user)) : ?>
+    <main>
+      <div class="container mx-auto">
+        <h1>Side redigeret</h1>
+        <p>Siden er gemt</p>
+      </div>
+    </main>
+  <?php else : ?>
+    <main>
+      <div class="container mx-auto">
+        <p><a href="login.php">Log in</a></p>
+      </div>
+    </main>
+  <?php endif; ?>
   <?php include('includes/footer_admin.php') ?>
 </body>
 

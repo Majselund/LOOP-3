@@ -9,6 +9,7 @@ input {
     border: solid 1px var(--text-color);
 }
 
+
 input::placeholder {
     font-size: medium;
     color: var(--text-color);
@@ -27,3 +28,21 @@ input[type=submit]:hover {
     background-position: left;
     cursor: pointer;
 }
+
+button {
+    font-size: large;
+    background-color: var(--secondary-green);
+    width: 150px;
+    height: 40px;
+    margin: 20px;
+}
+
+button:hover {
+    cursor: pointer;
+}
+
+.flex {
+    display: row;
+    justify-content: center;
+    align-items: center;
+} 

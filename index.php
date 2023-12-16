@@ -23,7 +23,7 @@ if ($result->num_rows > 0) {
     <link rel="stylesheet" href="styles/global.css">
     <link rel="stylesheet" href="styles/index.css">
     <link rel="icon" href="icon.svg">
-    <script defer src="javascript/heroImage.js"></script>
+    <script defer src="js/heroImage.js"></script>
 </head>
 
 <body>
@@ -49,7 +49,7 @@ if ($result->num_rows > 0) {
             <div class="prose mx-auto">
                 <?php echo $text1 ?>
             </div><br>
-            <img src="<?php echo $imageURL; ?>" alt="<?php echo $imageName; ?>" class="block mx-auto prose" />
+            <img src="<?php echo $imageURL; ?>" alt="<?php echo $imageName; ?>" class="block mx-auto prose" width="100%" />
         </div>
     </main>
     <?php include('includes/footer.php') ?>

@@ -1,7 +1,13 @@
 .masonry {
-    column-count: 4;
+    column-count: 2;
     column-gap: 10px;
     padding: 10px;
+}
+
+@media (min-width: 768px) {
+    .masonry {
+        column-count: 4;
+    }
 }
 
 figure {
@@ -52,10 +58,16 @@ img {
 
 .modal-content {
     position: relative;
-    padding: 20px;
-    width: 80vw;
+    padding: 10px;
     margin: auto;
     height: 95vh;
+}
+
+@media (min-width: 768px) {
+    .modal-content {
+        width: 80vw;
+        padding: 20px;
+    }
 }
 
 .modal-image {

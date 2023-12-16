@@ -63,27 +63,37 @@ if (isset($_POST['submit'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rediger side</title>
     <link rel="stylesheet" href="../styles/global.css">
+    <link rel="stylesheet" href="./edit_page.css">
     <script type="text/javascript" src='https://cdn.tiny.cloud/1/i2q56l2uu4wsqfm78zlcivot3qxhn06jbgpapqk5b0h1o3vd/tinymce/6/tinymce.min.js'></script>
     <script src="./js/tinymce.js"></script>
 </head>
 
 <body>
     <?php include('includes/navigation.php') ?>
-    <main>
-        <div id="main" class="content container mx-auto">
-            <h1>Upload billeder til galleri</h1>
-            <div id="main" class="content container mx-auto prose">
-                <?php if (!empty($statusMsg)) { ?>
-                    <p class="stmsg"><?php echo $statusMsg; ?></p>
-                <?php } ?>
-                <form method="post" action="" enctype="multipart/form-data">
-                    <label for="image">Image</label>
-                    <input type="file" name="image[]" id="image" multiple>
-                    <input type="submit" name="submit" value="GEM">
-                </form>
-                <p>Gå til galleri siden for at slette billeder.</p>
+    <?php if (isset($user)) : ?>
+        <main>
+            <div id="main" class="content container mx-auto">
+                <h1>Upload billeder til galleri</h1>
+                <?php include('includes/second_nav.php') ?>
+                <div id="main" class="content container mx-auto prose">
+                    <?php if (!empty($statusMsg)) { ?>
+                        <p class="stmsg"><?php echo $statusMsg; ?></p>
+                    <?php } ?>
+                    <form method="post" action="" enctype="multipart/form-data">
+                        <label for="image">Image</label>
+                        <input type="file" name="image[]" id="image" multiple>
+                        <input type="submit" name="submit" value="GEM">
+                    </form>
+                    <p>Gå til galleri siden for at slette billeder.</p>
+                </div>
+        </main>
+    <?php else : ?>
+        <main>
+            <div class="container mx-auto">
+                <p><a href="login.php">Log in</a></p>
             </div>
-    </main>
+        </main>
+    <?php endif; ?>
     <?php include('includes/footer_admin.php') ?>
 </body>
 

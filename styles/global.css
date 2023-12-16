@@ -31,11 +31,16 @@ nav {
     position: sticky;
     top: 0px;
     background-color: var(--secondary-green);
-    opacity: 0.9;
     z-index: 5;
     font-size: 20px;
     text-align: end;
     padding: 25px 100px;
+}
+
+@media (min-width: 768px) {
+    nav {
+        opacity: 0.9;
+    }
 }
 
 .navigation {
@@ -43,23 +48,89 @@ nav {
     justify-content: space-between;
 }
 
+.hamburger {
+    position: absolute;
+    top: 23px;
+    right: 20px;
+    background: transparent;
+    border: none;
+    font-size: medium;
+}
+
+.menu-mobile {
+    display: none;
+    position: absolute;
+    inset: 0px;
+    height: 100svh;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 15;
+}
+
+.menu-mobile .content {
+    position: absolute;
+    right: 0px;
+    height: 100svh;
+    width: 80%;
+    background: #FFFFFF;
+    align-items: start;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding-top: 100px;
+}
+
+.menu-mobile .content div {
+    margin-left: 25px;
+}
+
+.menu-desktop {
+    display: none;
+}
+
+@media (min-width: 768px) {
+    .menu-desktop {
+        display: block;
+    }
+}
+
 main {
-    flex-grow: 1;
+    padding: 5px;
+    flex-grow: 1; /* Sørger for at footeren altid er i bunden af siden i tilfælde af at der ikke er nok indhold i main div */
+}
+
+@media (min-width: 768px) {
+    main {
+        padding: 15px;
+    }
 }
 
 main .content {
-    padding: 80px;
+    padding: 10px;
+}
+
+@media (min-width: 768px) {
+    main .content {
+        padding: 80px;
+    }
 }
 
 h1 {
     text-align: center;
     color: var(--text-color);
+    font-size: x-large;
+}
+
+@media (min-width: 768px) {
+    h1 {
+        font-size: xx-large
+    }
 }
 
 footer {
     background-color: var(--secondary-green);
     color: var(--text-color);
     font-size: 15px;
+    padding: 10px;
 }
 
 footer a {
@@ -91,7 +162,13 @@ footer .content {
 }
 .grid {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: 1fr;
+}
+
+@media (min-width: 768px) {
+    .grid {
+        grid-template-columns: 1fr 1fr 1fr;
+    }
 }
 
 .block {
