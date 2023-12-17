@@ -33,10 +33,14 @@ if ($result->num_rows > 0) {
             <div class="prose mx-auto">
                 <?php echo $text1 ?>
             </div>
+
             <img src="<?php echo $imageURL; ?>" alt="<?php echo $imageName; ?>" class="block mx-auto prose" width="100%" />
+
             <div class="prose mx-auto">
                 <?php echo $text2 ?>
             </div>
+
+            <img src="<?php echo $image2URL; ?>" alt="<?php echo $image2Name; ?>" class="block mx-auto prose" width="100%" />
         </div>
     </main>
     <?php include('../../includes/footer.php') ?>
