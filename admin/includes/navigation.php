@@ -1,4 +1,4 @@
-<?php if (isset($user)) : ?>
+<?php if (isset($user) and !$is_invalid) : ?>
     <nav>
         <div class="container mx-auto navigation">
             <div>

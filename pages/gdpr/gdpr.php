@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Innovationsdage</title>
     <link rel="stylesheet" href="../../styles/global.css">
+    <link rel="stylesheet" href="https://use.typekit.net/hpo1qtj.css">
     <link rel="stylesheet" href="./gdpr.css">
 </head>
 

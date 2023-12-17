@@ -8,7 +8,9 @@ if ($result->num_rows > 0) {
         $text1 = $page['text1'];
         $text2 = $page['text2'];
         $imageName = $page["image"];
+        $image2Name = $page["image2"];
         $imageURL = '/../../images/' . $page["image"];
+        $image2URL = '/../../images/' . $page["image2"];
     }
 }
 ?>
@@ -21,6 +23,7 @@ if ($result->num_rows > 0) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>About</title>
     <link rel="stylesheet" href="../../styles/global.css">
+    <link rel="stylesheet" href="https://use.typekit.net/hpo1qtj.css">
 </head>
 
 <body>

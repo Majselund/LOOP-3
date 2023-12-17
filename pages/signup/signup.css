@@ -1,13 +1,13 @@
 input {
-    background-color: var(--light-grey);
+    background-color: var(--secondary-green);
     width: 100%;
     padding: 10px 15px;
-    border: 1px solid rgb(1, 8, 19);
+    border: 1px solid var(--secondary-green);
     border-radius: 4px;
     font-size: medium;
     box-sizing: border-box;
     margin-bottom: 20px;
-    border: solid 4px var(--secondary-green);
+    /* border: solid 4px var(--secondary-green); */
 }
 
 input::placeholder {

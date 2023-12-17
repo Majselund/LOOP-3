@@ -28,13 +28,6 @@
     align-items: center;
 }
 
-.heroText {
-    display: flex;
-    align-items: end;
-    flex-grow: 1;
-    font-size: 100px;
-    margin-bottom: 75px;
-}
 
 .hero a {
     margin: 50px;

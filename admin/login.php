@@ -32,14 +32,16 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 	<title>Login</title>
 	<meta charset="UTF-8">
 	<link rel="stylesheet" href="../styles/global.css">
+	<link rel="stylesheet" href="https://use.typekit.net/hpo1qtj.css">
 	<link rel="stylesheet" href="./login.css">
 </head>
 
 <body>
 	<?php include('includes/navigation.php') ?>
 	<?php if ($is_invalid) : ?>
-		<h1>Login</h1>
-		<em>Invalid login</em>
+		<div class="flex error">
+			<em>Invalid login</em>
+		</div>
 	<?php endif; ?>
 	<main>
 		<div id="main" class="content container mx-auto">

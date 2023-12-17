@@ -17,6 +17,7 @@ if (isset($_SESSION["user_id"])) {
     <title>Gallery</title>
     <link rel="stylesheet" href="../../styles/global.css">
     <link rel="stylesheet" href="gallery.css">
+    <link rel="stylesheet" href="https://use.typekit.net/hpo1qtj.css">
     <script defer src="../../js/gallery.js"></script>
 </head>
 

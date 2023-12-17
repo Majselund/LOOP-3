@@ -15,6 +15,7 @@ if (isset($_SESSION["user_id"])) {
     <title>Create User</title>
     <meta charset="UTF-8" />
     <link rel="stylesheet" href="../styles/global.css">
+    <link rel="stylesheet" href="https://use.typekit.net/hpo1qtj.css">
     <link rel="stylesheet" href="./create_user.css">
 </head>
 
@@ -28,19 +29,19 @@ if (isset($_SESSION["user_id"])) {
                     <form action="./includes/process-signup.php" method="post" id="signup">
                         <div>
                             <label for="name">Name</label>
-                            <input type="text" id="name" name="name" />
+                            <input type="text" id="name" name="name" placeholder="Indsæt her" />
                         </div>
                         <div>
                             <label for="email">Email</label>
-                            <input type="email" id="email" name="email" />
+                            <input type="email" id="email" name="email" placeholder="Indsæt her" />
                         </div>
                         <div>
                             <label for="password">Password</label>
-                            <input type="password" id="password" name="password" />
+                            <input type="password" id="password" name="password" placeholder="Indsæt her" />
                         </div>
                         <div>
                             <label for="password_confirmation">Repeat password</label>
-                            <input type="password" id="password_confirmation" name="password_confirmation" />
+                            <input type="password" id="password_confirmation" name="password_confirmation" placeholder="Indsæt her" />
                         </div>
                         <input type="submit" value="SUBMIT">
                     </form>

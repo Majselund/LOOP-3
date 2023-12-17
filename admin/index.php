@@ -14,6 +14,7 @@ if (isset($_SESSION["user_id"])) {
     <title>Home</title>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="../styles/global.css">
+    <link rel="stylesheet" href="https://use.typekit.net/hpo1qtj.css">
 </head>
 
 <body>

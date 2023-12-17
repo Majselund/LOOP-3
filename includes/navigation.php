@@ -34,7 +34,7 @@
             </div>
         </div>
         <div class="menu-desktop">
-            <a href="/pages/about/about.php">Om Innovationsdagene</a> | <a href="/pages/gallery/gallery.php">Galleri</a> | <a href="/pages/signup/signup.php">Tilmelding</a> | <a href="#contact">Kontakt</a>
+            <a href="/pages/about/about.php">Om Innovationsdagene</a> <a href="/pages/gallery/gallery.php">Galleri</a> <a href="/pages/signup/signup.php">Tilmelding</a> <a href="#contact">Kontakt</a>
         </div>
     </div>
 </nav>

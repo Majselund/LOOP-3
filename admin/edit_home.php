@@ -19,6 +19,8 @@ if ($getPage->num_rows > 0) {
         $image2Name = $page["image2"];  // Add this line
         $imageURL = '/../images/' . $page["image"];
         $image2URL = '/../images/' . $page["image2"];  // Add this line
+        $showImage = $page['showImage'];
+        $showImage2 = $page['showImage2'];
     }
 }
 
@@ -29,6 +31,8 @@ if (isset($_POST['submit'])) {
     $title = $_POST['title'];
     $text1 = $_POST['page_editor1'];
     $text2 = $_POST['page_editor2'];
+    $showImage = isset($_POST['showImage']) && $_POST['showImage'] == '1' ? 1 : 0;
+    $showImage2 = isset($_POST['showImage2']) && $_POST['showImage2'] == '1' ? 1 : 0;
 
     $targetDir = '/var/www/innovationsdage.dk/public_html/images/';
 
@@ -42,7 +46,7 @@ if (isset($_POST['submit'])) {
         if (in_array($imageType, $allowTypes)) {
             if (move_uploaded_file($_FILES["image"]["tmp_name"], $targetImagePath)) {
                 // Update database for Image 1
-                $sql = "UPDATE pages SET title=?, text1=?, text2=?, image=? WHERE page=?";
+                $sql = "UPDATE pages SET title=?, text1=?, text2=?, image=?, showImage=?, showImage2=? WHERE page=?";
                 $stmt = $mysqli->stmt_init();
 
                 if (!$stmt->prepare($sql)) {
@@ -50,11 +54,13 @@ if (isset($_POST['submit'])) {
                 }
 
                 $stmt->bind_param(
-                    "sssss",
+                    "ssssiis",
                     $title,
                     $text1,
                     $text2,
                     $imageName,
+                    $showImage,
+                    $showImage2,
                     $page
                 );
 
@@ -71,7 +77,7 @@ if (isset($_POST['submit'])) {
         }
     } else {
         // Update database without changing the image
-        $sql = "UPDATE pages SET title=?, text1=?, text2=? WHERE page=?";
+        $sql = "UPDATE pages SET title=?, text1=?, text2=?, showImage=?, showImage2=? WHERE page=?";
         $stmt = $mysqli->stmt_init();
 
         if (!$stmt->prepare($sql)) {
@@ -79,10 +85,12 @@ if (isset($_POST['submit'])) {
         }
 
         $stmt->bind_param(
-            "ssss",
+            "sssiis",
             $title,
             $text1,
             $text2,
+            $showImage,
+            $showImage2,
             $page
         );
 
@@ -139,6 +147,7 @@ if (isset($_POST['submit'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rediger side</title>
     <link rel="stylesheet" href="../styles/global.css">
+    <link rel="stylesheet" href="https://use.typekit.net/hpo1qtj.css">
     <link rel="stylesheet" href="./edit_page.css">
     <script type="text/javascript" src='https://cdn.tiny.cloud/1/i2q56l2uu4wsqfm78zlcivot3qxhn06jbgpapqk5b0h1o3vd/tinymce/6/tinymce.min.js'></script>
     <script src="./js/tinymce.js"></script>
@@ -165,6 +174,14 @@ if (isset($_POST['submit'])) {
 
                         <?php if ($imageName) { ?>
                             <img src="<?php echo $imageURL; ?>" alt="<?php echo $imageName; ?>" class="block prose" height="300px" />
+                            <div class="showImage">
+                                <p>Vis billede</p>
+                                <label class="switch">
+                                    <input type="hidden" name="showImage" value="0">
+                                    <input type="checkbox" name="showImage" value="1" <?php if ($showImage) echo "checked"; ?>>
+                                    <span class="slider"></span>
+                                </label>
+                            </div>
                         <?php } else { ?>
                             <p>Intet billede sat</p>
                         <?php } ?>
@@ -176,6 +193,14 @@ if (isset($_POST['submit'])) {
 
                         <?php if ($image2Name) { ?>
                             <img src="<?php echo $image2URL; ?>" alt="<?php echo $image2Name; ?>" class="block prose" height="300px" />
+                            <div class="showImage">
+                                <p>Vis billede</p>
+                                <label class="switch">
+                                    <input type="hidden" name="showImage2" value="0">
+                                    <input type="checkbox" name="showImage2" value="1" <?php if ($showImage2) echo "checked"; ?>>
+                                    <span class="slider"></span>
+                                </label>
+                            </div>
                         <?php } else { ?>
                             <p>Intet billede sat</p>
                         <?php } ?>
