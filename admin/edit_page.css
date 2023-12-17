@@ -46,3 +46,7 @@ button:hover {
     justify-content: center;
     align-items: center;
 } 
+
+img {
+    padding-bottom: 15px;
+}
