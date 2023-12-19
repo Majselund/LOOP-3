@@ -18,7 +18,9 @@ if ($getPage->num_rows > 0) {
         $imageName = $page["image"];
         $image2Name = $page["image2"];  // Add this line
         $imageURL = '/../images/' . $page["image"];
-        $image2URL = '/../images/' . $page["image2"];  // Add this line
+        $image2URL = '/../images/' . $page["image2"];
+        $showImage = $page['showImage'];
+        $showImage2 = $page['showImage2'];  // Add this line
     }
 }
 
@@ -29,6 +31,9 @@ if (isset($_POST['submit'])) {
     $title = $_POST['title'];
     $text1 = $_POST['page_editor1'];
     $text2 = $_POST['page_editor2'];
+    // hvis vi prøver at sende 1 så sender den 1, ellers så sender den 0. Normalt sender et input type=checked ikke nogen værdi hvis den ikke er checked.
+    $showImage = isset($_POST['showImage']) && $_POST['showImage'] == '1' ? 1 : 0;
+    $showImage2 = isset($_POST['showImage2']) && $_POST['showImage2'] == '1' ? 1 : 0;
 
     $targetDir = '/var/www/innovationsdage.dk/public_html/images/';
 

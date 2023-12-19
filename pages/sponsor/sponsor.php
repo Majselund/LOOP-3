@@ -13,6 +13,8 @@ if ($result->num_rows > 0) {
         $image2Name = $page["image2"];
         $imageURL = '/../../images/' . $page["image"];
         $image2URL = '/../../images/' . $page["image2"];
+        $showImage = $page['showImage'];
+        $showImage2 = $page['showImage2'];
     }
 }
 ?>
@@ -40,13 +42,18 @@ if ($result->num_rows > 0) {
                 <?php echo $text1 ?>
             </div>
 
-            <img src="<?php echo $imageURL; ?>" alt="<?php echo $imageName; ?>" class="block mx-auto prose" width="100%" />
+            <?php if ($showImage) { ?>
+                <img src="<?php echo $imageURL; ?>" alt="<?php echo $imageName; ?>" class="block mx-auto prose" width="100%" />
+            <?php } ?>
 
             <div class="prose mx-auto">
                 <?php echo $text2 ?>
             </div>
 
-            <img src="<?php echo $image2URL; ?>" alt="<?php echo $image2Name; ?>" class="block mx-auto prose" width="100%" />
+            <?php if ($showImage2) { ?>
+                <img src="<?php echo $image2URL; ?>" alt="<?php echo $image2Name; ?>" class="block mx-auto prose" width="100%" />
+            <?php } ?>
+
         </div>
     </main>
     <?php include('../../includes/footer.php') ?>
