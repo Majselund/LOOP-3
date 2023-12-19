@@ -4,7 +4,7 @@ $mysqli = require __DIR__ . "/database/config.php";
 // Der hentes data fra databasen. Der hentes alt fra pages hvor page er = home
 $result = $mysqli->query("SELECT * FROM pages WHERE page = 'home'");
 
-// Behandler data der er hentet fra databasen fra page = home
+// Tjekker om der er rækker returneret fra databasen
 if ($result->num_rows > 0) {
     // løkkefunktion 
     while ($page = $result->fetch_assoc()) {

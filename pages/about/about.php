@@ -1,8 +1,12 @@
 <?php
+// Opretter forbindelse til database
 $mysqli = require __DIR__ . "/../../database/config.php";
+// Der hentes data fra databasen. Der hentes alt fra pages hvor page er = about
 $result = $mysqli->query("SELECT * FROM pages WHERE page = 'about'");
 
+// Behandler data der er hentet fra databasen fra page = about
 if ($result->num_rows > 0) {
+    // løkkefunktion 
     while ($page = $result->fetch_assoc()) {
         $title = $page['title'];
         $text1 = $page['text1'];

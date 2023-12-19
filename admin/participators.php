@@ -6,17 +6,6 @@ if (isset($_SESSION["user_id"])) {
     $getUser = $mysqli->query("SELECT * FROM users WHERE id = {$_SESSION["user_id"]}");
     $user = $getUser->fetch_assoc();
 }
-
-// $result = $mysqli->query("SELECT * FROM tilmeldinger");
-// if ($result->num_rows > 0) {
-//     while ($row = $result->fetch_assoc()) {
-//         $uddannelsessted = $row['uddannelsessted'];
-//         $antal_elever = $row['antal_elever'];
-//         $kontaktperson = $row['kontaktperson'];
-//         $telefonnummer = $row['telefonnummer'];
-//         $emailadresse = $row['emailadresse'];
-//     }
-// }
 ?>
 <!DOCTYPE html>
 <html>
