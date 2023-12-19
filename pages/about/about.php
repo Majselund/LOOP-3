@@ -4,21 +4,18 @@ $mysqli = require __DIR__ . "/../../database/config.php";
 // Der hentes data fra databasen. Der hentes alt fra pages hvor page er = about
 $result = $mysqli->query("SELECT * FROM pages WHERE page = 'about'");
 
-// Behandler data der er hentet fra databasen fra page = about
-if ($result->num_rows > 0) {
-    // løkkefunktion 
-    while ($page = $result->fetch_assoc()) {
-        $title = $page['title'];
-        $text1 = $page['text1'];
-        $text2 = $page['text2'];
-        $imageName = $page["image"];
-        $image2Name = $page["image2"];
-        $imageURL = '/../../images/' . $page["image"];
-        $image2URL = '/../../images/' . $page["image2"];
-        $showImage = $page['showImage'];
-        $showImage2 = $page['showImage2'];
-    }
-}
+// Hentet første række fra databasen.
+$page = $result->fetch_assoc();
+
+$title = $page['title'];
+$text1 = $page['text1'];
+$text2 = $page['text2'];
+$imageName = $page["image"];
+$image2Name = $page["image2"];
+$imageURL = '/../../images/' . $page["image"];
+$image2URL = '/../../images/' . $page["image2"];
+$showImage = $page['showImage'];
+$showImage2 = $page['showImage2'];
 ?>
 
 <!DOCTYPE html>

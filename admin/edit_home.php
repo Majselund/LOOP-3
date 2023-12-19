@@ -10,19 +10,17 @@ if (isset($_SESSION["user_id"])) {
 }
 
 $getPage = $mysqli->query("SELECT * FROM pages WHERE page = '" . $page . "'");
-if ($getPage->num_rows > 0) {
-    while ($page = $getPage->fetch_assoc()) {
-        $title = $page['title'];
-        $text1 = $page['text1'];
-        $text2 = $page['text2'];
-        $imageName = $page["image"];
-        $image2Name = $page["image2"];  // Add this line
-        $imageURL = '/../images/' . $page["image"];
-        $image2URL = '/../images/' . $page["image2"];  // Add this line
-        $showImage = $page['showImage'];
-        $showImage2 = $page['showImage2'];
-    }
-}
+$page = $getPage->fetch_assoc();
+
+$title = $page['title'];
+$text1 = $page['text1'];
+$text2 = $page['text2'];
+$imageName = $page["image"];
+$image2Name = $page["image2"];
+$imageURL = '/../images/' . $page["image"];
+$image2URL = '/../images/' . $page["image2"];
+$showImage = $page['showImage'];
+$showImage2 = $page['showImage2'];
 
 $statusMsg = '';
 

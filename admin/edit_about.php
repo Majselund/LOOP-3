@@ -10,19 +10,18 @@ if (isset($_SESSION["user_id"])) {
 }
 
 $getPage = $mysqli->query("SELECT * FROM pages WHERE page = '" . $page . "'");
-if ($getPage->num_rows > 0) {
-    while ($page = $getPage->fetch_assoc()) {
-        $title = $page['title'];
-        $text1 = $page['text1'];
-        $text2 = $page['text2'];
-        $imageName = $page["image"];
-        $image2Name = $page["image2"];  // Add this line
-        $imageURL = '/../images/' . $page["image"];
-        $image2URL = '/../images/' . $page["image2"];
-        $showImage = $page['showImage'];
-        $showImage2 = $page['showImage2']; // Add this line
-    }
-}
+
+$page = $getPage->fetch_assoc();
+
+$title = $page['title'];
+$text1 = $page['text1'];
+$text2 = $page['text2'];
+$imageName = $page["image"];
+$image2Name = $page["image2"];
+$imageURL = '/../images/' . $page["image"];
+$image2URL = '/../images/' . $page["image2"];
+$showImage = $page['showImage'];
+$showImage2 = $page['showImage2'];
 
 $statusMsg = '';
 
@@ -47,7 +46,7 @@ if (isset($_POST['submit'])) {
         if (in_array($imageType, $allowTypes)) {
             if (move_uploaded_file($_FILES["image"]["tmp_name"], $targetImagePath)) {
                 // Update database for Image 1
-                $sql = "UPDATE pages SET title=?, text1=?, text2=?, image=? WHERE page=?";
+                $sql = "UPDATE pages SET title=?, text1=?, text2=?, image=?, showImage=?, showImage2=? WHERE page=?";
                 $stmt = $mysqli->stmt_init();
 
                 if (!$stmt->prepare($sql)) {
@@ -55,11 +54,13 @@ if (isset($_POST['submit'])) {
                 }
 
                 $stmt->bind_param(
-                    "sssss",
+                    "ssssiis",
                     $title,
                     $text1,
                     $text2,
                     $imageName,
+                    $showImage,
+                    $showImage2,
                     $page
                 );
 
@@ -76,7 +77,7 @@ if (isset($_POST['submit'])) {
         }
     } else {
         // Update database without changing the image
-        $sql = "UPDATE pages SET title=?, text1=?, text2=? WHERE page=?";
+        $sql = "UPDATE pages SET title=?, text1=?, text2=?, showImage=?, showImage2=? WHERE page=?";
         $stmt = $mysqli->stmt_init();
 
         if (!$stmt->prepare($sql)) {
@@ -84,10 +85,12 @@ if (isset($_POST['submit'])) {
         }
 
         $stmt->bind_param(
-            "ssss",
+            "sssiis",
             $title,
             $text1,
             $text2,
+            $showImage,
+            $showImage2,
             $page
         );
 
@@ -176,7 +179,7 @@ if (isset($_POST['submit'])) {
                             <div class="showImage">
                                 <p>Vis billede</p>
                                 <label class="switch">
-                                    <!-- hvis showimage2 er 1 så skal den vise checked -->
+                                    <!-- hvis showimage er 1 så skal den vise checked -->
                                     <input type="checkbox" name="showImage" value="1" <?php if ($showImage) echo "checked"; ?>>
                                     <span class="slider"></span>
                                 </label>
