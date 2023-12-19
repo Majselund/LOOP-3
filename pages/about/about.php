@@ -24,6 +24,7 @@ if ($result->num_rows > 0) {
     <title>About</title>
     <link rel="stylesheet" href="../../styles/global.css">
     <link rel="stylesheet" href="https://use.typekit.net/hpo1qtj.css">
+    <link rel="shortcut icon" href="/favicon.png" type="image/x-icon" />
 </head>
 
 <body>
@@ -31,18 +32,20 @@ if ($result->num_rows > 0) {
     <main>
         <div class="content container mx-auto">
             <h1>
+                <!-- Viser titlen der er lavet på admin siden -->
                 <?php echo $title ?>
             </h1>
+            <!-- Viser titlen der er lavet på admin siden -->
             <div class="prose mx-auto">
                 <?php echo $text1 ?>
             </div>
-
+            <!-- Viser billedet der er valgt på admin siden -->
             <img src="<?php echo $imageURL; ?>" alt="<?php echo $imageName; ?>" class="block mx-auto prose" width="100%" />
 
             <div class="prose mx-auto">
                 <?php echo $text2 ?>
             </div>
-
+            <!-- Viser billedet der er valgt på admin siden -->
             <img src="<?php echo $image2URL; ?>" alt="<?php echo $image2Name; ?>" class="block mx-auto prose" width="100%" />
         </div>
     </main>

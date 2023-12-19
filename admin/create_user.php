@@ -17,6 +17,7 @@ if (isset($_SESSION["user_id"])) {
     <link rel="stylesheet" href="../styles/global.css">
     <link rel="stylesheet" href="https://use.typekit.net/hpo1qtj.css">
     <link rel="stylesheet" href="./create_user.css">
+    <link rel="shortcut icon" href="/favicon.png" type="image/x-icon" />
 </head>
 
 <body>

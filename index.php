@@ -1,5 +1,7 @@
 <?php
+// Opretter forbindelse til database
 $mysqli = require __DIR__ . "/database/config.php";
+
 $result = $mysqli->query("SELECT * FROM pages WHERE page = 'home'");
 
 if ($result->num_rows > 0) {
@@ -28,7 +30,7 @@ if ($result->num_rows > 0) {
     <link rel="stylesheet" href="styles/index.css">
     <link rel="icon" href="icon.svg">
     <link rel="stylesheet" href="https://use.typekit.net/hpo1qtj.css">
-    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+    <link rel="shortcut icon" href="favicon.png" type="image/x-icon" />
     <script defer src="js/heroImage.js"></script>
 </head>
 

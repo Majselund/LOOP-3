@@ -45,9 +45,11 @@ input[type=submit]:hover {
 button {
     font-size: large;
     background-color: var(--secondary-green);
-    width: 150px;
+    padding-left: 15px;
+    padding-right: 15px;
     height: 40px;
     margin: 20px;
+    white-space: nowrap;
 }
 
 button:hover {

@@ -32,6 +32,7 @@ $stmt->bind_param(
     $emailadresse
 );
 
+// hvis registrering er vellykket dirigeres man til "signup_created.php"
 if ($stmt->execute()) {
     header("Location: ./signup_created.php");
     exit;

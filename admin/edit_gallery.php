@@ -84,6 +84,7 @@ if (isset($_POST['submit'])) {
     <link rel="stylesheet" href="./edit_page.css">
     <script type="text/javascript" src='https://cdn.tiny.cloud/1/i2q56l2uu4wsqfm78zlcivot3qxhn06jbgpapqk5b0h1o3vd/tinymce/6/tinymce.min.js'></script>
     <script src="./js/tinymce.js"></script>
+    <link rel="shortcut icon" href="/favicon.png" type="image/x-icon" />
 </head>
 
 <body>

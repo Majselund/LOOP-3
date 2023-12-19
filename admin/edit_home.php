@@ -31,6 +31,7 @@ if (isset($_POST['submit'])) {
     $title = $_POST['title'];
     $text1 = $_POST['page_editor1'];
     $text2 = $_POST['page_editor2'];
+    // hvis vi prøver at sende 1 så sender den 1, ellers så sender den 0. Normalt sender et input type=checked ikke nogen værdi hvis den ikke er checked.
     $showImage = isset($_POST['showImage']) && $_POST['showImage'] == '1' ? 1 : 0;
     $showImage2 = isset($_POST['showImage2']) && $_POST['showImage2'] == '1' ? 1 : 0;
 
@@ -151,6 +152,7 @@ if (isset($_POST['submit'])) {
     <link rel="stylesheet" href="./edit_page.css">
     <script type="text/javascript" src='https://cdn.tiny.cloud/1/i2q56l2uu4wsqfm78zlcivot3qxhn06jbgpapqk5b0h1o3vd/tinymce/6/tinymce.min.js'></script>
     <script src="./js/tinymce.js"></script>
+    <link rel="shortcut icon" href="/favicon.png" type="image/x-icon" />
 </head>
 
 <body>
@@ -158,7 +160,7 @@ if (isset($_POST['submit'])) {
     <?php if (isset($user)) : ?>
         <main>
             <div id="main" class="content container mx-auto">
-                <h1>Rediger siden: Hjem</h1>
+                <h1>Rediger siden: Forside</h1>
                 <?php include('includes/second_nav.php') ?>
                 <div id="main" class="content container mx-auto prose">
                     <?php if (!empty($statusMsg)) { ?>
@@ -174,10 +176,11 @@ if (isset($_POST['submit'])) {
 
                         <?php if ($imageName) { ?>
                             <img src="<?php echo $imageURL; ?>" alt="<?php echo $imageName; ?>" class="block prose" height="300px" />
+                            <!-- Checkboksen til om billedet skal vises på siden eller ikke -->
                             <div class="showImage">
                                 <p>Vis billede</p>
                                 <label class="switch">
-                                    <input type="hidden" name="showImage" value="0">
+                                    <!-- hvis showimage er 1 så skal den vise checked -->
                                     <input type="checkbox" name="showImage" value="1" <?php if ($showImage) echo "checked"; ?>>
                                     <span class="slider"></span>
                                 </label>
@@ -193,10 +196,11 @@ if (isset($_POST['submit'])) {
 
                         <?php if ($image2Name) { ?>
                             <img src="<?php echo $image2URL; ?>" alt="<?php echo $image2Name; ?>" class="block prose" height="300px" />
+                            <!-- Checkboksen til om billedet skal vises på siden eller ikke -->
                             <div class="showImage">
                                 <p>Vis billede</p>
                                 <label class="switch">
-                                    <input type="hidden" name="showImage2" value="0">
+                                    <!-- hvis showimage2 er 1 så skal den vise checked -->
                                     <input type="checkbox" name="showImage2" value="1" <?php if ($showImage2) echo "checked"; ?>>
                                     <span class="slider"></span>
                                 </label>

@@ -7,6 +7,7 @@
     <title>Tilmelding</title>
     <link rel="stylesheet" href="../../styles/global.css">
     <link rel="stylesheet" href="https://use.typekit.net/hpo1qtj.css">
+    <link rel="shortcut icon" href="/favicon.png" type="image/x-icon" />
     <link rel="stylesheet" href="signup.css">
 </head>
 

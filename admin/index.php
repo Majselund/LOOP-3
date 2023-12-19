@@ -15,6 +15,7 @@ if (isset($_SESSION["user_id"])) {
     <meta charset="UTF-8">
     <link rel="stylesheet" href="../styles/global.css">
     <link rel="stylesheet" href="https://use.typekit.net/hpo1qtj.css">
+    <link rel="shortcut icon" href="/favicon.png" type="image/x-icon" />
 </head>
 
 <body>

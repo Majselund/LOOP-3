@@ -34,6 +34,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 	<link rel="stylesheet" href="../styles/global.css">
 	<link rel="stylesheet" href="https://use.typekit.net/hpo1qtj.css">
 	<link rel="stylesheet" href="./login.css">
+	<link rel="shortcut icon" href="/favicon.png" type="image/x-icon" />
 </head>
 
 <body>
