@@ -11,7 +11,7 @@ if (isset($_SESSION["user_id"])) {
 <html>
 
 <head>
-    <title>Home</title>
+    <title>Hjem</title>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="../styles/global.css">
     <link rel="stylesheet" href="https://use.typekit.net/hpo1qtj.css">
@@ -31,7 +31,7 @@ if (isset($_SESSION["user_id"])) {
         </main>
     <?php else : ?>
         <main>
-            <h1>Home</h1>
+            <h1>Hjem</h1>
             <div class="container mx-auto flex">
                 <p>
                     Du er ikke logget ind.
