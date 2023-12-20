@@ -24,10 +24,10 @@ if (!$terms) {
 $mysqli = require __DIR__ . "/../../database/config.php";
 //Sender indtastede values i tilmeldingsblanketten til databasen.
 $sql = "INSERT INTO tilmeldinger (uddannelsessted, antal_elever, kontaktperson, telefonnummer, emailadresse) VALUES (?, ?, ?, ?, ?)";
-//create new prepared statement objekt
+
 $stmt = $mysqli->stmt_init();
 
-// prepare the sql statement for execution. Det er her syntax error i sql registreres
+// Prepare SQL statement for execution. Det er her syntax error i SQL registreres
 //Hvis der er fejl kommer der besked "SQL error"
 if (!$stmt->prepare($sql)) {
     die("SQL error: " . $mysqli->error);

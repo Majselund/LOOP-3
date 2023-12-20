@@ -4,10 +4,9 @@ $mysqli = require __DIR__ . "/../../database/config.php";
 // Der hentes data fra databasen. Der hentes alt fra pages hvor page er = about
 $result = $mysqli->query("SELECT * FROM pages WHERE page = 'about'");
 
-// Hentet første række fra databasen.
 $page = $result->fetch_assoc();
 
-// Den resterende del af koden inkluderer variabeldeklarationer, hvor værdierne hentes fra hver enkelt kolonne i resultatet.
+// nedenstående inkluderer variabeldeklarationer, hvor værdierne hentes fra hver enkelt kolonne¨
 $title = $page['title'];
 $text1 = $page['text1'];
 $text2 = $page['text2'];
