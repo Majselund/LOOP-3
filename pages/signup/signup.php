@@ -17,6 +17,7 @@
         <div id="main" class="content container mx-auto">
             <h1>Tilmelding til innovationsdagene</h1>
             <div id="main" class="content container mx-auto prose">
+                <!-- når formen er submitted sendes indtastede data til process-signup.php. Post bruges når man gemmer data på en server. -->
                 <form action="process-signup.php" method="POST">
                     <label for="uddannelsessted">Uddannelsessted</label><br>
                     <input type="text" name="uddannelsessted" required="" placeholder="Indsæt her">

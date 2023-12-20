@@ -1,9 +1,15 @@
 <?php
+//start en session
 session_start();
 
+//Tjekker om sessionsvariablen "user_id" er sat. Dette bruges til at kontrollere, om en bruger er logget ind.
+//Hvis "user_id" er sat, betyder det, at en bruger er logget ind, og if kan dermed udføres.
 if (isset($_SESSION["user_id"])) {
+    //opretter forbindelse til databasen
     $mysqli = require __DIR__ . "/../database/config.php";
+    //Henter alt data fra tabellen users hvor id = bruger id fra sessionen
     $result = $mysqli->query("SELECT * FROM users WHERE id = {$_SESSION["user_id"]}");
+    //henter data på den pågældende bruger
     $user = $result->fetch_assoc();
 }
 
@@ -11,6 +17,7 @@ $targetDir = '/var/www/innovationsdage.dk/public_html/images/gallery/';
 $thumbnailDir = '/var/www/innovationsdage.dk/public_html/images/thumbnails/';
 $statusMsg = '';
 
+//Hvis billedet er submitted på knappen 'gem'.......
 if (isset($_POST['submit'])) {
 
     if (!empty($_FILES["image"]["name"]) && is_array($_FILES["image"]["name"])) {
@@ -19,14 +26,14 @@ if (isset($_POST['submit'])) {
         $uploadStatus = [];
 
         foreach ($imageNames as $key => $imageName) {
-            // Check if the file type is allowed
+            // Tjekker om filtypen er tilladt
             $imageType = pathinfo($imageName, PATHINFO_EXTENSION);
             if (in_array($imageType, $allowTypes)) {
                 $targetImagePath = $targetDir . $imageName;
 
                 // Attempt to move the uploaded file
                 if (move_uploaded_file($_FILES["image"]["tmp_name"][$key], $targetImagePath)) {
-                    // Insert the image into the database
+                    // Indsætter billede til databasen
                     $sql = "INSERT INTO gallery (image) VALUES (?)";
                     $stmt = $mysqli->stmt_init();
 

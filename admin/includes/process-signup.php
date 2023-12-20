@@ -1,5 +1,7 @@
 <?php
 
+// Beskeder der kommer frem hvis et felt ikke er udfyldt korrekt
+
 if (empty($_POST["name"])) {
     die("Name is required");
 }
@@ -19,6 +21,7 @@ if ($_POST["password"] !== $_POST["password_confirmation"]) {
     die("Passwords must match");
 }
 $password_hash = password_hash($_POST["password"], PASSWORD_DEFAULT);
+// Henter mysqli variablen fra database config filen, som opretter forbindelse til databasen
 $mysqli = require __DIR__ . "/../../database/config.php";
 $sql = "INSERT INTO users (name, email, password_hash) VALUES (?, ?, ?)";
 $stmt = $mysqli->stmt_init();
@@ -34,6 +37,7 @@ $stmt->bind_param(
     $password_hash
 );
 
+// Når bruger er oprettet henvises man til siden 'user created'
 if ($stmt->execute()) {
     header("Location: ../user_created.php");
     exit;

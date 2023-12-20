@@ -2,17 +2,23 @@
 session_start();
 
 $page = 'about';
+// Henter mysqli variablen fra database config filen.
 $mysqli = require __DIR__ . "/../database/config.php";
 
+//Tjekker om sessionsvariablen "user_id" er sat. Dette bruges til at kontrollere, om en bruger er logget ind.
+//Hvis "user_id" er sat, betyder det, at en bruger er logget ind, og if kan dermed udføres.
 if (isset($_SESSION["user_id"])) {
+    //vælger alt fra tabellen users hvor id = user_id
     $getUser = $mysqli->query("SELECT * FROM users WHERE id = {$_SESSION["user_id"]}");
     $user = $getUser->fetch_assoc();
 }
 
+//vælger alt fra tabellen pages hvor page = about
 $getPage = $mysqli->query("SELECT * FROM pages WHERE page = '" . $page . "'");
 
 $page = $getPage->fetch_assoc();
 
+//læser alt det der står i row for siden "about"
 $title = $page['title'];
 $text1 = $page['text1'];
 $text2 = $page['text2'];
@@ -25,18 +31,20 @@ $showImage2 = $page['showImage2'];
 
 $statusMsg = '';
 
+// Hvis der submittes en POST (altså indhold fra edit siden), så sendes der indhold for hver variabel til databasen
 if (isset($_POST['submit'])) {
     $page = 'about';
     $title = $_POST['title'];
     $text1 = $_POST['page_editor1'];
     $text2 = $_POST['page_editor2'];
     // hvis vi prøver at sende 1 så sender den 1, ellers så sender den 0. Normalt sender et input type=checked ikke nogen værdi hvis den ikke er checked.
+    // Det vil sige at når slideren bliver blå så er det = 1, og dermed vises billedet på siden.
     $showImage = isset($_POST['showImage']) && $_POST['showImage'] == '1' ? 1 : 0;
     $showImage2 = isset($_POST['showImage2']) && $_POST['showImage2'] == '1' ? 1 : 0;
 
     $targetDir = '/var/www/innovationsdage.dk/public_html/images/';
 
-    // Handle Image 1
+    // Håndtering af billede 1
     if (!empty($_FILES["image"]["name"])) {
         $imageName = basename($_FILES["image"]["name"]);
         $targetImagePath = $targetDir . $imageName;
@@ -76,7 +84,7 @@ if (isset($_POST['submit'])) {
             $statusMsg = 'Sorry, only JPG, JPEG, PNG, & GIF files are allowed to upload.';
         }
     } else {
-        // Update database without changing the image
+        // Updater database uden at ændre billedet
         $sql = "UPDATE pages SET title=?, text1=?, text2=?, showImage=?, showImage2=? WHERE page=?";
         $stmt = $mysqli->stmt_init();
 
@@ -101,7 +109,7 @@ if (isset($_POST['submit'])) {
         }
     }
 
-    // Handle Image 2
+    // behandler billede 2
     if (!empty($_FILES["image2"]["name"])) {
         $image2Name = basename($_FILES["image2"]["name"]);
         $targetImage2Path = $targetDir . $image2Name;
@@ -110,7 +118,7 @@ if (isset($_POST['submit'])) {
         $allowTypes = array('jpg', 'png', 'jpeg', 'gif', 'avif', 'webp');
         if (in_array($image2Type, $allowTypes)) {
             if (move_uploaded_file($_FILES["image2"]["tmp_name"], $targetImage2Path)) {
-                // Update database for Image 2
+                // Updater database for billede 2
                 $sql = "UPDATE pages SET image2=? WHERE page=?";
                 $stmt = $mysqli->stmt_init();
 

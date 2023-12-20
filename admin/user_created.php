@@ -21,6 +21,7 @@ if (isset($_SESSION["user_id"])) {
 
 <body>
   <?php include('includes/navigation.php') ?>
+  <!-- det kontrollerer om man er logget ind. Hvis man er kan man se indholdet på siden "opret bruger" -->
   <?php if (isset($user)) : ?>
     <main>
       <div class="container mx-auto">
@@ -29,6 +30,7 @@ if (isset($_SESSION["user_id"])) {
       </div>
     </main>
   <?php else : ?>
+    <!-- Hvis man ikke er logget ind kan man tilgå "login" -->
     <main>
       <div class="container mx-auto">
         <p><a href="login.php">Log in</a></p>

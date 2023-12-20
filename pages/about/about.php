@@ -7,6 +7,7 @@ $result = $mysqli->query("SELECT * FROM pages WHERE page = 'about'");
 // Hentet første række fra databasen.
 $page = $result->fetch_assoc();
 
+// Den resterende del af koden inkluderer variabeldeklarationer, hvor værdierne hentes fra hver enkelt kolonne i resultatet.
 $title = $page['title'];
 $text1 = $page['text1'];
 $text2 = $page['text2'];
@@ -34,23 +35,28 @@ $showImage2 = $page['showImage2'];
     <?php include('../../includes/navigation.php') ?>
     <main>
         <div class="content container mx-auto">
+            <!-- henter title fra databasen -->
             <h1>
-                <!-- Viser titlen der er lavet på admin siden -->
                 <?php echo $title ?>
             </h1>
-            <!-- Viser titlen der er lavet på admin siden -->
+
+            <!-- henter tekstfelt 1 fra databasen -->
             <div class="prose mx-auto">
                 <?php echo $text1 ?>
             </div>
-            <!-- Viser billedet der er valgt på admin siden -->
+
+            <!-- Hvis 'showimage' er sand vises billedet -->
             <?php if ($showImage) { ?>
                 <img src="<?php echo $imageURL; ?>" alt="<?php echo $imageName; ?>" class="block mx-auto prose" width="100%" />
             <?php } ?>
 
+
             <div class="prose mx-auto">
+                <!-- Henter tekstfelt 2 -->
                 <?php echo $text2 ?>
             </div>
-            <!-- Viser billedet der er valgt på admin siden -->
+
+            <!-- Henter billede 2 hvis 'showimage2' er sandt -->
             <?php if ($showImage2) { ?>
                 <img src="<?php echo $image2URL; ?>" alt="<?php echo $image2Name; ?>" class="block mx-auto prose" width="100%" />
             <?php } ?>

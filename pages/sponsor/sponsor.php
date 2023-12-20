@@ -1,11 +1,15 @@
 <?php
 
 $page = 'sponsor';
+// Opretter forbindelse til database
 $mysqli = require __DIR__ . "/../../database/config.php";
+// Der hentes data fra databasen. Der hentes alt fra pages hvor page er = home
 $result = $mysqli->query("SELECT * FROM pages WHERE page = '" . $page . "'");
 
+// Henter første række fra databasen.
 $page = $result->fetch_assoc();
 
+// Den resterende del af koden inkluderer variabeldeklarationer, hvor værdierne hentes fra hver enkelt kolonne i resultatet.
 $title = $page['title'];
 $text1 = $page['text1'];
 $text2 = $page['text2'];
@@ -34,20 +38,26 @@ $showImage2 = $page['showImage2'];
     <main>
         <div id="main" class="content container mx-auto">
             <h1>
+                <!-- henter title fra databasen -->
                 <?php echo $title ?>
             </h1>
+
             <div class="prose mx-auto">
+                <!-- henter tekstfelt 1 fra databasen -->
                 <?php echo $text1 ?>
             </div>
 
+            <!-- Hvis 'showimage' er sand vises billedet -->
             <?php if ($showImage) { ?>
                 <img src="<?php echo $imageURL; ?>" alt="<?php echo $imageName; ?>" class="block mx-auto prose" width="100%" />
             <?php } ?>
 
             <div class="prose mx-auto">
+                <!-- Henter tekstfelt 2 -->
                 <?php echo $text2 ?>
             </div>
 
+            <!-- Henter billede 2 hvis 'showimage2' er sandt -->
             <?php if ($showImage2) { ?>
                 <img src="<?php echo $image2URL; ?>" alt="<?php echo $image2Name; ?>" class="block mx-auto prose" width="100%" />
             <?php } ?>

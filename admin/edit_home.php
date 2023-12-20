@@ -2,14 +2,19 @@
 session_start();
 
 $page = 'home';
+// Henter mysqli variablen fra database config filen.
 $mysqli = require __DIR__ . "/../database/config.php";
 
+// Hvis brugeren er logget ind starter if strukturen
 if (isset($_SESSION["user_id"])) {
+    // Det er en SQL- dataforesprøgsel til databasen
+    //vælger alt fra tabellen users hvor id = user_id
     $getUser = $mysqli->query("SELECT * FROM users WHERE id = {$_SESSION["user_id"]}");
     $user = $getUser->fetch_assoc();
 }
-
+// Det er en SQL-dataforespørgsel til databasen
 $getPage = $mysqli->query("SELECT * FROM pages WHERE page = '" . $page . "'");
+// resultatsættet hentes fra databasen
 $page = $getPage->fetch_assoc();
 
 $title = $page['title'];
@@ -24,6 +29,7 @@ $showImage2 = $page['showImage2'];
 
 $statusMsg = '';
 
+// Hvis der er submitted indhold i formularen så kommer der en if struktur
 if (isset($_POST['submit'])) {
     $page = 'home';
     $title = $_POST['title'];
@@ -35,7 +41,7 @@ if (isset($_POST['submit'])) {
 
     $targetDir = '/var/www/innovationsdage.dk/public_html/images/';
 
-    // Handle Image 1
+    // Behandler billede 1
     if (!empty($_FILES["image"]["name"])) {
         $imageName = basename($_FILES["image"]["name"]);
         $targetImagePath = $targetDir . $imageName;
@@ -44,7 +50,7 @@ if (isset($_POST['submit'])) {
         $allowTypes = array('jpg', 'png', 'jpeg', 'gif', 'avif', 'webp');
         if (in_array($imageType, $allowTypes)) {
             if (move_uploaded_file($_FILES["image"]["tmp_name"], $targetImagePath)) {
-                // Update database for Image 1
+                // Updater database for billede 1
                 $sql = "UPDATE pages SET title=?, text1=?, text2=?, image=?, showImage=?, showImage2=? WHERE page=?";
                 $stmt = $mysqli->stmt_init();
 
@@ -75,7 +81,7 @@ if (isset($_POST['submit'])) {
             $statusMsg = 'Sorry, only JPG, JPEG, PNG, & GIF files are allowed to upload.';
         }
     } else {
-        // Update database without changing the image
+        // Update database uden at ænbdre billedet
         $sql = "UPDATE pages SET title=?, text1=?, text2=?, showImage=?, showImage2=? WHERE page=?";
         $stmt = $mysqli->stmt_init();
 
@@ -100,7 +106,7 @@ if (isset($_POST['submit'])) {
         }
     }
 
-    // Handle Image 2
+    // Behandler billede 2
     if (!empty($_FILES["image2"]["name"])) {
         $image2Name = basename($_FILES["image2"]["name"]);
         $targetImage2Path = $targetDir . $image2Name;
@@ -109,7 +115,7 @@ if (isset($_POST['submit'])) {
         $allowTypes = array('jpg', 'png', 'jpeg', 'gif', 'avif', 'webp');
         if (in_array($image2Type, $allowTypes)) {
             if (move_uploaded_file($_FILES["image2"]["tmp_name"], $targetImage2Path)) {
-                // Update database for Image 2
+                // Updater database for billede 2
                 $sql = "UPDATE pages SET image2=? WHERE page=?";
                 $stmt = $mysqli->stmt_init();
 
@@ -155,6 +161,7 @@ if (isset($_POST['submit'])) {
 
 <body>
     <?php include('includes/navigation.php') ?>
+    <!-- Hvis man er logget ind kan man se følgende -->
     <?php if (isset($user)) : ?>
         <main>
             <div id="main" class="content container mx-auto">

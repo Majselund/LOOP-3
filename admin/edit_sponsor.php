@@ -46,7 +46,7 @@ if (isset($_POST['submit'])) {
         if (in_array($imageType, $allowTypes)) {
             if (move_uploaded_file($_FILES["image"]["tmp_name"], $targetImagePath)) {
                 // Update database for Image 1
-                $sql = "UPDATE pages SET title=?, text1=?, text2=?, image=? WHERE page=?";
+                $sql = "UPDATE pages SET title=?, text1=?, text2=?, image=?, showImage=?, showImage2=? WHERE page=?";
                 $stmt = $mysqli->stmt_init();
 
                 if (!$stmt->prepare($sql)) {
@@ -54,11 +54,13 @@ if (isset($_POST['submit'])) {
                 }
 
                 $stmt->bind_param(
-                    "sssss",
+                    "ssssiis",
                     $title,
                     $text1,
                     $text2,
                     $imageName,
+                    $showImage,
+                    $showImage2,
                     $page
                 );
 
@@ -75,7 +77,7 @@ if (isset($_POST['submit'])) {
         }
     } else {
         // Update database without changing the image
-        $sql = "UPDATE pages SET title=?, text1=?, text2=? WHERE page=?";
+        $sql = "UPDATE pages SET title=?, text1=?, text2=?, showImage=?, showImage2=? WHERE page=?";
         $stmt = $mysqli->stmt_init();
 
         if (!$stmt->prepare($sql)) {
@@ -83,10 +85,12 @@ if (isset($_POST['submit'])) {
         }
 
         $stmt->bind_param(
-            "ssss",
+            "sssiis",
             $title,
             $text1,
             $text2,
+            $showImage,
+            $showImage2,
             $page
         );
 

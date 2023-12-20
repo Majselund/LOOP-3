@@ -11,6 +11,7 @@
 
 <body>
   <?php include('includes/navigation.php') ?>
+  <!-- Hvis man er logget ind kan man se nedenstående -->
   <?php if (isset($user)) : ?>
     <main>
       <div class="container mx-auto">
@@ -18,6 +19,7 @@
         <p>Siden er gemt</p>
       </div>
     </main>
+    <!-- Hvis man ikke er logget ind kan man se nedenstående -->
   <?php else : ?>
     <main>
       <div class="container mx-auto">

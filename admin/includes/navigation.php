@@ -1,3 +1,4 @@
+<!-- Hvis man er logget ind kan man tilgå nedenstående -->
 <?php if (isset($user) and !$is_invalid) : ?>
     <nav>
         <div class="container mx-auto navigation">
@@ -9,6 +10,7 @@
             </div>
         </div>
     </nav>
+    <!-- Hvis man ikke er logget ind kan man se nedenstående -->
 <?php else : ?>
     <nav>
         <div class="container mx-auto navigation">

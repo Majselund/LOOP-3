@@ -7,7 +7,7 @@ $result = $mysqli->query("SELECT * FROM pages WHERE page = 'home'");
 // Henter første række fra databasen.
 $page = $result->fetch_assoc();
 
-// Den resterende del af koden inkluderer variabeldeklarationer, hvor værdierne hentes fra hver enkelt række i resultatet.
+// Den resterende del af koden inkluderer variabeldeklarationer, hvor værdierne hentes fra hver enkelt kolonne i resultatet.
 $title = $page['title'];
 $text1 = $page['text1'];
 $text2 = $page['text2'];
@@ -54,6 +54,7 @@ $showImage2 = $page['showImage2'];
                 <!-- henter title fra databasen -->
                 <?php echo $title ?>
             </h1>
+
             <div class="prose mx-auto">
                 <!-- henter tekstfelt 1 fra databasen -->
                 <?php echo $text1 ?>
@@ -64,8 +65,9 @@ $showImage2 = $page['showImage2'];
                 <img src="<?php echo $imageURL; ?>" alt="<?php echo $imageName; ?>" class="block mx-auto prose" width="100%" />
             <?php } ?>
 
-            <!-- Henter tekstfelt 2 -->
+
             <div class="prose mx-auto">
+                <!-- Henter tekstfelt 2 -->
                 <?php echo $text2 ?>
             </div>
 

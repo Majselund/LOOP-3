@@ -1,10 +1,15 @@
 <?php
 session_start();
 
+//Tjekker om sessionsvariablen "user_id" er sat. Dette bruges til at kontrollere, om en bruger er logget ind.
+//Hvis "user_id" er sat, betyder det, at en bruger er logget ind, og if kan dermed udføres.
 if (isset($_SESSION["user_id"])) {
+    //opretter forbindelse til databasen
     $mysqli = require __DIR__ . "/../database/config.php";
+    //Henter alt data fra tabellen users hvor id = bruger id
     $sql = "SELECT * FROM users WHERE id = {$_SESSION["user_id"]}";
     $result = $mysqli->query($sql);
+    //henter data på den pågældende bruger
     $user = $result->fetch_assoc();
 }
 ?>
@@ -22,6 +27,7 @@ if (isset($_SESSION["user_id"])) {
 
 <body>
     <?php include('includes/navigation.php') ?>
+    <!-- det kontrollres først at man er logget ind, og hvis man er det, kan man som admin gå ind op oprette en bruger  -->
     <?php if (isset($user)) : ?>
         <main>
             <div id="main" class="content container mx-auto">
@@ -49,6 +55,8 @@ if (isset($_SESSION["user_id"])) {
                 </div>
             </div>
         </main>
+
+        <!-- Hvis man ikke er logget ind kan man kun se siden hvor man logger ind -->
     <?php else : ?>
         <main>
             <div class="container mx-auto">
