@@ -5,7 +5,8 @@ $page = 'home';
 // Henter mysqli variablen fra database config filen.
 $mysqli = require __DIR__ . "/../database/config.php";
 
-// Hvis brugeren er logget ind starter if strukturen
+//Tjekker om sessionsvariablen "user_id" er sat. Dette bruges til at kontrollere, om en bruger er logget ind.
+//Hvis "user_id" er sat, betyder det, at en bruger er logget ind, og if kan dermed udføres.
 if (isset($_SESSION["user_id"])) {
     // Det er en SQL- dataforesprøgsel til databasen
     //vælger alt fra tabellen users hvor id = user_id
@@ -13,6 +14,7 @@ if (isset($_SESSION["user_id"])) {
     $user = $getUser->fetch_assoc();
 }
 // Det er en SQL-dataforespørgsel til databasen
+//vælger alt fra tabellen pages hvor page = home
 $getPage = $mysqli->query("SELECT * FROM pages WHERE page = '" . $page . "'");
 // resultatsættet hentes fra databasen
 $page = $getPage->fetch_assoc();
@@ -182,9 +184,9 @@ if (isset($_POST['submit'])) {
                         <label for="image">Image</label>
                         <input type="file" name="image" id="image">
 
+                        <!-- Findes der et billede i imageName i databasen viser vi en checkboks til om billedet skal vises på siden eller ikke -->
                         <?php if ($imageName) { ?>
                             <img src="<?php echo $imageURL; ?>" alt="<?php echo $imageName; ?>" class="block prose" height="300px" />
-                            <!-- Checkboksen til om billedet skal vises på siden eller ikke -->
                             <div class="showImage">
                                 <p>Vis billede</p>
                                 <label class="switch">
@@ -202,9 +204,9 @@ if (isset($_POST['submit'])) {
                         <label for="image2">Image 2</label>
                         <input type="file" name="image2" id="image2">
 
+                        <!-- Findes der et billede i imageName2 i databasen viser vi en checkboks til om billedet skal vises på siden eller ikke -->
                         <?php if ($image2Name) { ?>
                             <img src="<?php echo $image2URL; ?>" alt="<?php echo $image2Name; ?>" class="block prose" height="300px" />
-                            <!-- Checkboksen til om billedet skal vises på siden eller ikke -->
                             <div class="showImage">
                                 <p>Vis billede</p>
                                 <label class="switch">

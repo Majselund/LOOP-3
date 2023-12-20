@@ -2,13 +2,19 @@
 session_start();
 
 $page = 'sponsor';
+// Henter mysqli variablen fra database config filen.
 $mysqli = require __DIR__ . "/../database/config.php";
 
+//Tjekker om sessionsvariablen "user_id" er sat. Dette bruges til at kontrollere, om en bruger er logget ind.
+//Hvis "user_id" er sat, betyder det, at en bruger er logget ind, og if kan dermed udføres.
 if (isset($_SESSION["user_id"])) {
+    // Det er en SQL- dataforesprøgsel til databasen
+    //vælger alt fra tabellen users hvor id = user_id
     $getUser = $mysqli->query("SELECT * FROM users WHERE id = {$_SESSION["user_id"]}");
     $user = $getUser->fetch_assoc();
 }
-
+// Det er en SQL-dataforespørgsel til databasen
+//vælger alt fra tabellen pages hvor page = sponsor
 $getPage = $mysqli->query("SELECT * FROM pages WHERE page = '" . $page . "'");
 
 $page = $getPage->fetch_assoc();
@@ -25,18 +31,21 @@ $showImage2 = $page['showImage2'];
 
 $statusMsg = '';
 
+// Hvis der er submitted indhold i formularen så kommer der en if struktur
 if (isset($_POST['submit'])) {
     $page = 'sponsor';
     $title = $_POST['title'];
     $text1 = $_POST['page_editor1'];
     $text2 = $_POST['page_editor2'];
     // hvis vi prøver at sende 1 så sender den 1, ellers så sender den 0. Normalt sender et input type=checked ikke nogen værdi hvis den ikke er checked.
+    // Det vil sige at når slideren bliver blå så er det = 1, og dermed vises billedet på siden.
     $showImage = isset($_POST['showImage']) && $_POST['showImage'] == '1' ? 1 : 0;
     $showImage2 = isset($_POST['showImage2']) && $_POST['showImage2'] == '1' ? 1 : 0;
 
     $targetDir = '/var/www/innovationsdage.dk/public_html/images/';
 
-    // Handle Image 1
+    // Nedenfor tjekker vi om vi har et billede i vores første file input (image)
+    // Har vi det uploader vi alt tekst samt billede. Hvis ikke går vi i else hvor vi kun uploader alt tekst.
     if (!empty($_FILES["image"]["name"])) {
         $imageName = basename($_FILES["image"]["name"]);
         $targetImagePath = $targetDir . $imageName;
@@ -45,7 +54,7 @@ if (isset($_POST['submit'])) {
         $allowTypes = array('jpg', 'png', 'jpeg', 'gif', 'avif', 'webp');
         if (in_array($imageType, $allowTypes)) {
             if (move_uploaded_file($_FILES["image"]["tmp_name"], $targetImagePath)) {
-                // Update database for Image 1
+                // Updater database for billede 1 samt tekst og booleans.
                 $sql = "UPDATE pages SET title=?, text1=?, text2=?, image=?, showImage=?, showImage2=? WHERE page=?";
                 $stmt = $mysqli->stmt_init();
 
@@ -76,7 +85,7 @@ if (isset($_POST['submit'])) {
             $statusMsg = 'Sorry, only JPG, JPEG, PNG, & GIF files are allowed to upload.';
         }
     } else {
-        // Update database without changing the image
+        // Updater database med alt tekst uden billede 1
         $sql = "UPDATE pages SET title=?, text1=?, text2=?, showImage=?, showImage2=? WHERE page=?";
         $stmt = $mysqli->stmt_init();
 
@@ -101,7 +110,8 @@ if (isset($_POST['submit'])) {
         }
     }
 
-    // Handle Image 2
+    // Her tjekker vi om vi har et billede i vores andet file input (image2)
+    // Har vi dette kører vi en ny forbindelse til databasen hvor vi tilføjer billede navnet til vores page.
     if (!empty($_FILES["image2"]["name"])) {
         $image2Name = basename($_FILES["image2"]["name"]);
         $targetImage2Path = $targetDir . $image2Name;
@@ -110,7 +120,7 @@ if (isset($_POST['submit'])) {
         $allowTypes = array('jpg', 'png', 'jpeg', 'gif', 'avif', 'webp');
         if (in_array($image2Type, $allowTypes)) {
             if (move_uploaded_file($_FILES["image2"]["tmp_name"], $targetImage2Path)) {
-                // Update database for Image 2
+                // Updater database for billede 2
                 $sql = "UPDATE pages SET image2=? WHERE page=?";
                 $stmt = $mysqli->stmt_init();
 
@@ -156,6 +166,7 @@ if (isset($_POST['submit'])) {
 
 <body>
     <?php include('includes/navigation.php') ?>
+    <!-- Hvis man er logget ind kan man se følgende -->
     <?php if (isset($user)) : ?>
         <main>
             <div id="main" class="content container mx-auto">
@@ -173,13 +184,13 @@ if (isset($_POST['submit'])) {
                         <label for="image">Image</label>
                         <input type="file" name="image" id="image">
 
+                        <!-- Findes der et billede i imageName i databasen viser vi en checkboks til om billedet skal vises på siden eller ikke -->
                         <?php if ($imageName) { ?>
                             <img src="<?php echo $imageURL; ?>" alt="<?php echo $imageName; ?>" class="block prose" height="300px" />
-                            <!-- Checkboksen til om billedet skal vises på siden eller ikke -->
                             <div class="showImage">
                                 <p>Vis billede</p>
                                 <label class="switch">
-                                    <!-- hvis showimage2 er 1 så skal den vise checked -->
+                                    <!-- hvis showimage er 1 så skal den vise checked -->
                                     <input type="checkbox" name="showImage" value="1" <?php if ($showImage) echo "checked"; ?>>
                                     <span class="slider"></span>
                                 </label>
@@ -193,9 +204,9 @@ if (isset($_POST['submit'])) {
                         <label for="image2">Image 2</label>
                         <input type="file" name="image2" id="image2">
 
+                        <!-- Findes der et billede i imageName2 i databasen viser vi en checkboks til om billedet skal vises på siden eller ikke -->
                         <?php if ($image2Name) { ?>
                             <img src="<?php echo $image2URL; ?>" alt="<?php echo $image2Name; ?>" class="block prose" height="300px" />
-                            <!-- Checkboksen til om billedet skal vises på siden eller ikke -->
                             <div class="showImage">
                                 <p>Vis billede</p>
                                 <label class="switch">

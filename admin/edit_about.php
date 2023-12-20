@@ -8,6 +8,7 @@ $mysqli = require __DIR__ . "/../database/config.php";
 //Tjekker om sessionsvariablen "user_id" er sat. Dette bruges til at kontrollere, om en bruger er logget ind.
 //Hvis "user_id" er sat, betyder det, at en bruger er logget ind, og if kan dermed udføres.
 if (isset($_SESSION["user_id"])) {
+    // Det er en SQL- dataforesprøgsel til databasen
     //vælger alt fra tabellen users hvor id = user_id
     $getUser = $mysqli->query("SELECT * FROM users WHERE id = {$_SESSION["user_id"]}");
     $user = $getUser->fetch_assoc();
@@ -17,7 +18,6 @@ if (isset($_SESSION["user_id"])) {
 $getPage = $mysqli->query("SELECT * FROM pages WHERE page = '" . $page . "'");
 
 $page = $getPage->fetch_assoc();
-
 
 $title = $page['title'];
 $text1 = $page['text1'];
@@ -166,6 +166,7 @@ if (isset($_POST['submit'])) {
 
 <body>
     <?php include('includes/navigation.php') ?>
+    <!-- Hvis man er logget ind kan man se følgende -->
     <?php if (isset($user)) : ?>
         <main>
             <div id="main" class="content container mx-auto">

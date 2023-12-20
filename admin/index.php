@@ -5,6 +5,7 @@ session_start();
 if (isset($_SESSION["user_id"])) {
     //opretter forbindelse til databasen
     $mysqli = require __DIR__ . "/../database/config.php";
+    // Det er en SQL- dataforesprøgsel til databasen
     //Henter alt data fra tabellen users hvor id = bruger id
     $getUser = $mysqli->query("SELECT * FROM users WHERE id = {$_SESSION["user_id"]}");
     //henter data på den pågældende bruger
