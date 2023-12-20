@@ -3,7 +3,7 @@ $id = $_GET['id'];
 
 //opretter forbindelse til databasen
 $mysqli = require __DIR__ . "/../database/config.php";
-//slet fra tabellen tilmeldinger hvor id = det id det tilsvarer det pågældende tilmeldings id
+// definerer i sql query at du vil slette fra tabellen tilmeldinger hvor id = det pågældende id
 $sql = "DELETE FROM tilmeldinger WHERE id = ?";
 
 $stmt = $mysqli->stmt_init();
@@ -19,6 +19,8 @@ $stmt->bind_param(
     $id,
 );
 
+//Her udføres SQL queryen. Det vil sige tilmeldingen slettes.
+// hvis det lykkedes bliver man sendt tilbage til participators.php
 if ($stmt->execute()) {
     header('Location: participators.php');
     exit;

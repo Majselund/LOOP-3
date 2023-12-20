@@ -17,46 +17,59 @@ $targetDir = '/var/www/innovationsdage.dk/public_html/images/gallery/';
 $thumbnailDir = '/var/www/innovationsdage.dk/public_html/images/thumbnails/';
 $statusMsg = '';
 
-//Hvis billedet er submitted på knappen 'gem'.......
+//Hvis et eller flere billeder er sendt som post via formen når brugeren har trykket på submit knappen kører følgende if struktur
 if (isset($_POST['submit'])) {
 
+    // Tjekker om der er et billede uploaded og om dette er sendt som array. Hvis ikke returnerer vi en fejl.
     if (!empty($_FILES["image"]["name"]) && is_array($_FILES["image"]["name"])) {
         $imageNames = $_FILES["image"]["name"];
         $allowTypes = array('jpg', 'png', 'jpeg', 'gif', 'webp');
         $uploadStatus = [];
 
+        // Looper igennem array'et imageNames og sætter hver enkelte billede navn til imageName
         foreach ($imageNames as $key => $imageName) {
-            // Tjekker om filtypen er tilladt
+            // Tjekker filtypen på det billede der er uploaded og gemmer det i variablen imageType
             $imageType = pathinfo($imageName, PATHINFO_EXTENSION);
+            // Tjekker om fil typen for billedet er en del af array'et for tilladte filtyper. I så fald går vi videre ellers returnerer vi en fejl.
             if (in_array($imageType, $allowTypes)) {
                 $targetImagePath = $targetDir . $imageName;
 
-                // Attempt to move the uploaded file
+                // Forsøger at flytte det uploadede billede til targetImagePath som er placeringen hvor billedet skal ligge på filserveren samt billedenavn og type.
+                // Lykkedes det at flytte billedet fortsætter vi videre ellers returnerer vi en fejl.
                 if (move_uploaded_file($_FILES["image"]["tmp_name"][$key], $targetImagePath)) {
-                    // Indsætter billede til databasen
+                    // Nedenfor definerer vi først vores sql query hvor vi fortæller at imageName skal indsættes i tabellen gallery
                     $sql = "INSERT INTO gallery (image) VALUES (?)";
-                    $stmt = $mysqli->stmt_init();
 
+                    // Derefter klargør vi vores statement for at kunne binde vores imageName til sql querien 
+                    $stmt = $mysqli->stmt_init();
                     if (!$stmt->prepare($sql)) {
                         $uploadStatus[] = "SQL error for $imageName: " . $mysqli->error;
                     } else {
                         $stmt->bind_param("s", $imageName);
+                        // Til sidst kører vi execute for at indsætte billede navnet i databasen. Lykkedes dette går vi videre til at lave vore thumbnail billede.
                         if ($stmt->execute()) {
                             $uploadStatus[] = "File $imageName uploaded successfully.";
 
-                            // Generate and save thumbnail
+                            // Her definerer vi vores fulde thumbnail path som består af vores directory path samt billedenavn som vi prefixer med thumb_.
                             $thumbnailPath = $thumbnailDir . 'thumb_' . $imageName;
+                            // Her aflæser vi bredde og højde for vores originale billede
                             list($width, $height) = getimagesize($targetImagePath);
 
-                            // Determine thumbnail dimensions based on aspect ratio
+                            // For at vores galleri ser pænt ud har vi valgt at hvert thumbnail billede skal have en bredde på 750px.
                             $thumbWidth = 750;
+                            // Da alle billeder ikke har samme aspect ratio og gerne vil have en fixed bredde bliver vi nød til at beregne højden for hvert thumbnail billede.
                             $thumbHeight = floor($height * ($thumbWidth / $width));
 
+                            // Her laver vi et nyt blankt true color image i vores server hukommelse med den bredde og højde vi gerne vil have vores thumbnail billede til at være.
                             $thumb = imagecreatetruecolor($thumbWidth, $thumbHeight);
+                            // For at lave billede manipulation bliver vi nød til at have vores originale billede i server hukommelsen. Det gør vi nedenfor ved imagecreatefromjpeg funktionen. 
                             $source = imagecreatefromjpeg($targetImagePath);
+                            // Nu kan vi tage vores billede og kopierer det ind på vores true color image i den rigtige størrelse. Alt foregår stadig i server hukommelsen.
                             imagecopyresized($thumb, $source, 0, 0, 0, 0, $thumbWidth, $thumbHeight, $width, $height);
+                            // Her gemmer vi det nye thumbnail billede som jpeg.
                             imagejpeg($thumb, $thumbnailPath);
 
+                            // Vi har nu vores thumbnail billede og har ikke længere brug for vores true color image og originale billede og fjerner det der for fra vores server hukommelse.
                             imagedestroy($thumb);
                             imagedestroy($source);
                         } else {

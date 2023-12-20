@@ -36,12 +36,14 @@ if (isset($_POST['submit'])) {
     $text1 = $_POST['page_editor1'];
     $text2 = $_POST['page_editor2'];
     // hvis vi prøver at sende 1 så sender den 1, ellers så sender den 0. Normalt sender et input type=checked ikke nogen værdi hvis den ikke er checked.
+    // Det vil sige at når slideren bliver blå så er det = 1, og dermed vises billedet på siden.
     $showImage = isset($_POST['showImage']) && $_POST['showImage'] == '1' ? 1 : 0;
     $showImage2 = isset($_POST['showImage2']) && $_POST['showImage2'] == '1' ? 1 : 0;
 
     $targetDir = '/var/www/innovationsdage.dk/public_html/images/';
 
-    // Behandler billede 1
+    // Nedenfor tjekker vi om vi har et billede i vores første file input (image)
+    // Har vi det uploader vi alt tekst samt billede. Hvis ikke går vi i else hvor vi kun uploader alt tekst.
     if (!empty($_FILES["image"]["name"])) {
         $imageName = basename($_FILES["image"]["name"]);
         $targetImagePath = $targetDir . $imageName;
@@ -50,7 +52,7 @@ if (isset($_POST['submit'])) {
         $allowTypes = array('jpg', 'png', 'jpeg', 'gif', 'avif', 'webp');
         if (in_array($imageType, $allowTypes)) {
             if (move_uploaded_file($_FILES["image"]["tmp_name"], $targetImagePath)) {
-                // Updater database for billede 1
+                // Updater database for billede 1 samt tekst og booleans.
                 $sql = "UPDATE pages SET title=?, text1=?, text2=?, image=?, showImage=?, showImage2=? WHERE page=?";
                 $stmt = $mysqli->stmt_init();
 
@@ -81,7 +83,7 @@ if (isset($_POST['submit'])) {
             $statusMsg = 'Sorry, only JPG, JPEG, PNG, & GIF files are allowed to upload.';
         }
     } else {
-        // Update database uden at ænbdre billedet
+        // Updater database med alt tekst uden billede 1
         $sql = "UPDATE pages SET title=?, text1=?, text2=?, showImage=?, showImage2=? WHERE page=?";
         $stmt = $mysqli->stmt_init();
 
@@ -106,7 +108,8 @@ if (isset($_POST['submit'])) {
         }
     }
 
-    // Behandler billede 2
+    // Her tjekker vi om vi har et billede i vores andet file input (image2)
+    // Har vi dette kører vi en ny forbindelse til databasen hvor vi tilføjer billede navnet til vores page.
     if (!empty($_FILES["image2"]["name"])) {
         $image2Name = basename($_FILES["image2"]["name"]);
         $targetImage2Path = $targetDir . $image2Name;

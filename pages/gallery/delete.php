@@ -1,12 +1,13 @@
 <?php
-//Henter id fra pågældende billede 
+//Henter det id der er blevet sendt med ovre fra gallery.php
 $id = $_GET['id'];
 
 //opretter forbindelse til databasen
 $mysqli = require __DIR__ . "/../../database/config.php";
-//sletter billede fra galleriet med et pågældende id.
+// Definerer vores SQL Query
 $sql = "DELETE FROM gallery WHERE id = ?";
 
+// Klargør vores statement for at kunne binde vores id ind i vores sql query
 $stmt = $mysqli->stmt_init();
 if (!$stmt->prepare($sql)) {
     die("SQL error: " . $mysqli->error);
@@ -16,6 +17,7 @@ $stmt->bind_param(
     $id,
 );
 
+//sletter billede fra galleriet med det pågældende id.
 if ($stmt->execute()) {
     header('Location: gallery.php');
     exit;

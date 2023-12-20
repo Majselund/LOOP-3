@@ -12,13 +12,13 @@ if (isset($_SESSION["user_id"])) {
     $getUser = $mysqli->query("SELECT * FROM users WHERE id = {$_SESSION["user_id"]}");
     $user = $getUser->fetch_assoc();
 }
-
+// Det er en SQL-dataforespørgsel til databasen
 //vælger alt fra tabellen pages hvor page = about
 $getPage = $mysqli->query("SELECT * FROM pages WHERE page = '" . $page . "'");
 
 $page = $getPage->fetch_assoc();
 
-//læser alt det der står i row for siden "about"
+
 $title = $page['title'];
 $text1 = $page['text1'];
 $text2 = $page['text2'];
@@ -31,7 +31,7 @@ $showImage2 = $page['showImage2'];
 
 $statusMsg = '';
 
-// Hvis der submittes en POST (altså indhold fra edit siden), så sendes der indhold for hver variabel til databasen
+// Hvis der er submitted indhold i formularen så kommer der en if struktur
 if (isset($_POST['submit'])) {
     $page = 'about';
     $title = $_POST['title'];
@@ -44,7 +44,8 @@ if (isset($_POST['submit'])) {
 
     $targetDir = '/var/www/innovationsdage.dk/public_html/images/';
 
-    // Håndtering af billede 1
+    // Nedenfor tjekker vi om vi har et billede i vores første file input (image)
+    // Har vi det uploader vi alt tekst samt billede. Hvis ikke går vi i else hvor vi kun uploader alt tekst.
     if (!empty($_FILES["image"]["name"])) {
         $imageName = basename($_FILES["image"]["name"]);
         $targetImagePath = $targetDir . $imageName;
@@ -53,7 +54,7 @@ if (isset($_POST['submit'])) {
         $allowTypes = array('jpg', 'png', 'jpeg', 'gif', 'avif', 'webp');
         if (in_array($imageType, $allowTypes)) {
             if (move_uploaded_file($_FILES["image"]["tmp_name"], $targetImagePath)) {
-                // Update database for Image 1
+                // Updater database for billede 1 samt tekst og booleans.
                 $sql = "UPDATE pages SET title=?, text1=?, text2=?, image=?, showImage=?, showImage2=? WHERE page=?";
                 $stmt = $mysqli->stmt_init();
 
@@ -84,7 +85,7 @@ if (isset($_POST['submit'])) {
             $statusMsg = 'Sorry, only JPG, JPEG, PNG, & GIF files are allowed to upload.';
         }
     } else {
-        // Updater database uden at ændre billedet
+        // Updater database med alt tekst uden billede 1
         $sql = "UPDATE pages SET title=?, text1=?, text2=?, showImage=?, showImage2=? WHERE page=?";
         $stmt = $mysqli->stmt_init();
 
@@ -109,7 +110,8 @@ if (isset($_POST['submit'])) {
         }
     }
 
-    // behandler billede 2
+    // Her tjekker vi om vi har et billede i vores andet file input (image2)
+    // Har vi dette kører vi en ny forbindelse til databasen hvor vi tilføjer billede navnet til vores page.
     if (!empty($_FILES["image2"]["name"])) {
         $image2Name = basename($_FILES["image2"]["name"]);
         $targetImage2Path = $targetDir . $image2Name;
@@ -181,9 +183,9 @@ if (isset($_POST['submit'])) {
                         <label for="image">Image</label>
                         <input type="file" name="image" id="image">
 
+                        <!-- Findes der et billede i imageName i databasen viser vi en checkboks til om billedet skal vises på siden eller ikke -->
                         <?php if ($imageName) { ?>
                             <img src="<?php echo $imageURL; ?>" alt="<?php echo $imageName; ?>" class="block prose" height="300px" />
-                            <!-- Checkboksen til om billedet skal vises på siden eller ikke -->
                             <div class="showImage">
                                 <p>Vis billede</p>
                                 <label class="switch">
@@ -201,9 +203,9 @@ if (isset($_POST['submit'])) {
                         <label for="image2">Image 2</label>
                         <input type="file" name="image2" id="image2">
 
+                        <!-- Findes der et billede i imageName2 i databasen viser vi en checkboks til om billedet skal vises på siden eller ikke -->
                         <?php if ($image2Name) { ?>
                             <img src="<?php echo $image2URL; ?>" alt="<?php echo $image2Name; ?>" class="block prose" height="300px" />
-                            <!-- Checkboksen til om billedet skal vises på siden eller ikke -->
                             <div class="showImage">
                                 <p>Vis billede</p>
                                 <label class="switch">
