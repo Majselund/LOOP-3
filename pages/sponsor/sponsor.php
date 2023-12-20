@@ -1,16 +1,16 @@
 <?php
 
 $page = 'sponsor';
-// Opretter forbindelse til database
+// Henter mysqli variablen fra database config filen.
 $mysqli = require __DIR__ . "/../../database/config.php";
-// Der hentes data fra databasen. Der hentes alt fra pages hvor page er = home
+// Det er en SQL-dataforespørgsel til databasen
+//vælger alt fra tabellen pages hvor page = sponsor
 $result = $mysqli->query("SELECT * FROM pages WHERE page = '" . $page . "'");
 
 // Henter første række fra databasen.
 $page = $result->fetch_assoc();
 
-// Den resterende del af koden inkluderer variabeldeklarationer, hvor værdierne hentes fra hver enkelt kolonne i resultatet.
-$title = $page['title'];
+// nedenstående inkluderer variabeldeklarationer, hvor værdierne hentes fra hver enkelt kolonne¨
 $text1 = $page['text1'];
 $text2 = $page['text2'];
 $imageName = $page["image"];

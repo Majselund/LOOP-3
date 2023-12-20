@@ -10,7 +10,7 @@ $telefonnummer = filter_input(INPUT_POST, "telefonnummer", FILTER_VALIDATE_INT);
 $emailadresse = $_POST["emailadresse"];
 $terms = filter_input(INPUT_POST, "terms", FILTER_VALIDATE_BOOLEAN);
 
-//hvis tilmeldingsfelterne er tomme kommer der beskeden "invalid inpuit. Please check yor form data"
+//hvis en af tilmeldingsfelterne er tomme kommer der beskeden "invalid inpuit. Please check yor form data"
 if (empty($uddannelsessted) || empty($kontaktperson) || empty($emailadresse) || $antal_elever === false || $telefonnummer === false) {
     die("Invalid input. Please check your form data.");
 }

@@ -1,8 +1,12 @@
 <?php
 session_start();
 
+//Tjekker om sessionsvariablen "user_id" er sat. Dette bruges til at kontrollere, om en bruger er logget ind.
+//Hvis "user_id" er sat, betyder det, at en bruger er logget ind, og if kan dermed udføres.
 if (isset($_SESSION["user_id"])) {
+  //opretter forbindelse til databasen
   $mysqli = require __DIR__ . "/../database/config.php";
+  //Henter data fra tabellen users hvor id = bruger id
   $sql = "SELECT * FROM users WHERE id = {$_SESSION["user_id"]}";
   $result = $mysqli->query($sql);
   $user = $result->fetch_assoc();

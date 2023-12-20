@@ -1,7 +1,8 @@
 <?php
-// Opretter forbindelse til database
+// Henter mysqli variablen fra database config filen.
 $mysqli = require __DIR__ . "/../../database/config.php";
-// Der hentes data fra databasen. Der hentes alt fra pages hvor page er = about
+// Det er en SQL-dataforespørgsel til databasen
+//vælger alt fra tabellen pages hvor page = about
 $result = $mysqli->query("SELECT * FROM pages WHERE page = 'about'");
 
 $page = $result->fetch_assoc();
