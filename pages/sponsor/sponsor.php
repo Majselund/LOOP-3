@@ -11,6 +11,7 @@ $result = $mysqli->query("SELECT * FROM pages WHERE page = '" . $page . "'");
 $page = $result->fetch_assoc();
 
 // nedenstående inkluderer variabeldeklarationer, hvor værdierne hentes fra hver enkelt kolonne¨
+$title = $page['title'];
 $text1 = $page['text1'];
 $text2 = $page['text2'];
 $imageName = $page["image"];
